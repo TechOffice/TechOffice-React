@@ -1,4 +1,4 @@
-import React = require("react");
+import * as React from "react";
 import Drawer from "@material-ui/core/Drawer";
 import Button from "@material-ui/core/Button";
 

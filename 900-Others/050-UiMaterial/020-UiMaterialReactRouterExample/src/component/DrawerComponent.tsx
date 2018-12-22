@@ -1,4 +1,4 @@
-import React = require("react");
+import * as React from "react";
 import { Route } from "react-router";
 import PermanentDrawerComponent from "./drawer/PermanentDrawerComponent";
 import { Link } from "react-router-dom";
