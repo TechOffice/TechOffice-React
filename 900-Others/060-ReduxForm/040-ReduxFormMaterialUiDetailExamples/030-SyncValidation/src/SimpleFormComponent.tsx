@@ -3,7 +3,7 @@ import { Field, reduxForm, FormProps, FormErrors, InjectedFormProps } from 'redu
 import TextField from './TextField';
 import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
-import SimpleFormValidation from './SimpleFormValidation';
+import simpleFormValidation from './simpleFormValidation';
 
 
 /**
@@ -22,7 +22,7 @@ import SimpleFormValidation from './SimpleFormValidation';
 ) as any)
 @(reduxForm({
     form : 'simple',
-    validate: SimpleFormValidation
+    validate: simpleFormValidation
 }) as any)
 export default class SimpleFormComponent extends React.Component<InjectedFormProps | any , any >{
 

@@ -3,6 +3,7 @@ import { Field, reduxForm, FormProps, FormErrors, InjectedFormProps } from 'redu
 import TextField from './TextField';
 import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
+import required from './required';
 
 /**
  * Simple Form Component 
@@ -28,7 +29,7 @@ export default class SimpleFormComponent extends React.Component<InjectedFormPro
 
     render(){
         return (
-            <form>
+            <form noValidate onSubmit={this.props.handleSubmit}>
                 <Grid container>
                     <Grid item>
                         <Field name="simpleTextField1" label="Simple Text Field 1" component={TextField}/>
@@ -36,7 +37,8 @@ export default class SimpleFormComponent extends React.Component<InjectedFormPro
                 </Grid>
                 <Grid container>
                     <Grid item>
-                        <Field name="requiredTextField1" label="Required Text Field 1" component={TextField} required/>
+                        <Field name="requiredTextField1" label="Required Text Field 1" component={TextField} 
+                            required validate={[required]}/>
                     </Grid>
                 </Grid>
                 <Grid container>

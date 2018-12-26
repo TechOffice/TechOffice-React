@@ -27,13 +27,21 @@ class App extends React.Component<any, any>{
     constructor(props){
         super(props);
         this.state = props;
+        this.handleSimpleFormSubmit.bind(this);
+    }
+
+    async handleSimpleFormSubmit(values){
+        const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+        console.log(values);
+        await sleep(500); // simulate server latency
+        window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`);
     }
 
     render(){
         return (
             <div>
                 <h1>Hello World</h1>
-                    <SimpleFormComponent/>
+                    <SimpleFormComponent onSubmit={this.handleSimpleFormSubmit}/>
                 <div>
                     {this.props.simple.firstName}
                 </div>
