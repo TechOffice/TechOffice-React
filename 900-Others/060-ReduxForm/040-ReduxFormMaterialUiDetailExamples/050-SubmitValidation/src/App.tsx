@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { combineReducers, createStore } from "redux";
-import { reducer } from 'redux-form';
+import { reducer, SubmissionError } from 'redux-form';
 import SimpleFormComponent from "./SimpleFormComponent";
 import { Provider, connect } from "react-redux";
 
@@ -29,11 +29,22 @@ class App extends React.Component<any, any>{
         this.state = props;
     }
 
+    async handleSimpleFormSubmit(values){
+        const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+        console.log(values);
+        await sleep(500); 
+        window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`);
+        throw new SubmissionError({
+            username: 'User does not exist',
+            _error: 'Login failed!'
+        });
+    }
+
     render(){
         return (
             <div>
                 <h1>Hello World</h1>
-                    <SimpleFormComponent/>
+                    <SimpleFormComponent onSubmit={this.handleSimpleFormSubmit}/>
                 <div>
                     {this.props.simple.firstName}
                 </div>

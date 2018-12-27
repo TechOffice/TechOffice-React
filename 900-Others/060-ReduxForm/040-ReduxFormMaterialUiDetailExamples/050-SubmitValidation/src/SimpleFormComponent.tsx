@@ -28,7 +28,7 @@ export default class SimpleFormComponent extends React.Component<InjectedFormPro
 
     render(){
         return (
-            <form>
+            <form onSubmit={this.props.handleSubmit} noValidate>
                 <Grid container>
                     <Grid item>
                         <Field name="simpleTextField1" label="Simple Text Field 1" component={TextField}/>
@@ -42,6 +42,12 @@ export default class SimpleFormComponent extends React.Component<InjectedFormPro
                 <Grid container>
                     <Grid item>
                         <Field name="disabledTextField1" label="Disabled Text Field 1" component={TextField} disabled/>
+                    </Grid>
+                </Grid>
+                {this.props.error && <strong>{this.props.error}</strong>}
+                <Grid container>
+                    <Grid item>
+                        <button type="submit">Submit</button>
                     </Grid>
                 </Grid>
             </form>
