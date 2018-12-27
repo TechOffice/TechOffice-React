@@ -34,10 +34,6 @@ class App extends React.Component<any, any>{
         console.log(values);
         await sleep(500); 
         window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`);
-        throw new SubmissionError({
-            username: 'User does not exist',
-            _error: 'Login failed!'
-        });
     }
 
     render(){

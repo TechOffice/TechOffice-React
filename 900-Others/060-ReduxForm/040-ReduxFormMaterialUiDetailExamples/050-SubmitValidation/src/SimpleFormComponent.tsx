@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Field, reduxForm, FormProps, FormErrors, InjectedFormProps } from 'redux-form';
+import { Field, reduxForm, FormProps, FormErrors, InjectedFormProps, SubmissionError } from 'redux-form';
 import TextField from './TextField';
 import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
@@ -24,11 +24,20 @@ export default class SimpleFormComponent extends React.Component<InjectedFormPro
     constructor(props: any){
         super(props);
         this.state = props;
+        this.submit = this.submit.bind(this);
+    }
+
+    submit(values){
+        console.log(values);
+        throw new SubmissionError({
+            username: 'User does not exist',
+            _error: 'Login failed!'
+        });
     }
 
     render(){
         return (
-            <form onSubmit={this.props.handleSubmit(e)} noValidate>
+            <form onSubmit={this.props.handleSubmit(this.submit)} noValidate>
                 <Grid container>
                     <Grid item>
                         <Field name="simpleTextField1" label="Simple Text Field 1" component={TextField}/>
