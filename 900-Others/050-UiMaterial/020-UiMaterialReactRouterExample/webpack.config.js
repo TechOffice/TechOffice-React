@@ -8,10 +8,12 @@ module.exports = {
 	},
 	devtool: "eval-source-map",
 	module: {
-		loaders: [
+		rules: [
 			{
 				test: /\.tsx$/,
-				loaders: ['babel-loader', 'ts-loader'],
+				use:{
+					loader: 'babel-loader'
+				},
 				exclude: [
 					/node_modules/
 				]
