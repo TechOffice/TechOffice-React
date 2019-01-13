@@ -8,7 +8,7 @@ export default class Product extends React.Component<any, any>{
         return(
             <Card style={{maxWidth: 345}}>
                 <CardActionArea>
-                    <CardMedia image="static/10412368723880252_1.jpg"
+                    <CardMedia image="static/images/10412368723880252_1.jpg"
                         style={{height: 140}}/>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
