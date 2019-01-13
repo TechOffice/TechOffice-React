@@ -12,10 +12,10 @@ export default class Product extends React.Component<any, any>{
                         style={{height: 140}}/>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
-                            Title 5
+                            Title 6
                         </Typography>
                         <Typography component="p">
-                            Content 2
+                            Content 3
                         </Typography>
                     </CardContent>
                 </CardActionArea>

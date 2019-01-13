@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
 	entry: './src/App.tsx',
@@ -9,7 +10,8 @@ module.exports = {
 	},
 	devtool: "eval-source-map",
 	devServer: {
-		contentBase: "./bin"
+		contentBase: "./",
+		hot: true
 	},
 	module: {
 		rules: [
@@ -24,6 +26,9 @@ module.exports = {
 			}
 		]
 	},
+	plugins: [
+		new webpack.HotModuleReplacementPlugin()
+	],
 	resolve: {
 		extensions: ['.jsx', '.js', '.tsx', 'ts'], 
 		modules: [ path.resolve(__dirname, 'src'), 'node_modules' ] 
