@@ -6,6 +6,7 @@ export default class Checkout extends React.Component<any, any>{
     render(){
         return (
             <div>
+                <h1>Checkout</h1>
                 <Grid container>
 
                 </Grid>

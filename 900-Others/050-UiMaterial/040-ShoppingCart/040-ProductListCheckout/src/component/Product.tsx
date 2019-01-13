@@ -1,7 +1,11 @@
 import * as React from "react";
+import { connect, Provider, DispatchProp } from "react-redux";
 import { Card, CardActionArea, CardMedia, CardContent, Typography, CardActions, Button } from "@material-ui/core";
 
-
+@(connect( 
+    (state) => {},
+    (dispatch) => {}
+) as any)
 export default class Product extends React.Component<any, any>{
     
     constructor(props){
