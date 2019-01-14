@@ -7,7 +7,10 @@ import { connect} from "react-redux";
     (state) => {
         console.log("trigger map state to props");
         console.log(state.checkoutItem);
-        return {checkoutItems: state.checkoutItem}
+        return {
+            checkoutItems: state.checkoutItem,
+            name: state.name
+        }
     },
     (dispatch) => {}
 ) as any)
@@ -30,8 +33,21 @@ export default class Checkout extends React.Component<any, any>{
                 <Grid container>
 
                 </Grid>
-                {this.props.checkoutItems.map((checkoutItem)=><div>1</div>)}
-                {JSON.stringify(this.props.checkoutItems)}
+                {
+                    this.props.checkoutItems.map(
+                        (checkoutItem)=>{
+                            return (
+                                <div id={checkoutItem.id}>
+                                    {JSON.stringify(checkoutItem)}
+                                </div>
+                            );
+                        }
+                            
+                    )
+                }
+                <div>
+                    {this.props.name}
+                </div>
             </div>
         );
     }

@@ -20,7 +20,12 @@ class App extends React.Component<any, any>{
         this.state = {
             productList: null
         };
-        this.store = createStore(appReducer, {checkoutItem: [{product: 1}]});
+        this.store = createStore(
+            appReducer, 
+            {
+                checkoutItem: []
+            }
+        );
     }
 
     componentWillMount() {
@@ -34,7 +39,7 @@ class App extends React.Component<any, any>{
         return (
             <Provider store={this.store}>
                 <Paper>
-                    <Grid container>
+                    <Grid container spacing={40}>
                         <Grid item md={7}>
                             <Paper>
                                 {this.state.productList && <ProductList productList={this.state.productList}/>}
