@@ -1,10 +1,12 @@
 import * as React from "react";
-import { connect, Provider, DispatchProp } from "react-redux";
+import { connect} from "react-redux";
 import { Card, CardActionArea, CardMedia, CardContent, Typography, CardActions, Button } from "@material-ui/core";
 
 @(connect( 
     (state) => {},
-    (dispatch) => {}
+    (dispatch) => ({
+        checkout: (product) => {dispatch({type: "CHECKOUT", product: product })}
+    })
 ) as any)
 export default class Product extends React.Component<any, any>{
     
@@ -32,7 +34,7 @@ export default class Product extends React.Component<any, any>{
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button size="small" color="primary">
+                    <Button size="small" color="primary" onClick={()=>{this.props.checkout(this.state.product)}}>
                         Share
                     </Button>
                 </CardActions>

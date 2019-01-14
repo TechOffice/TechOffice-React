@@ -1,7 +1,12 @@
 
 export default (state: any, action: any): any => {
-    if (action.type == "ADD_PRODUCT"){
-        state.checkoutItem.append(action.product);
+    console.log(action);
+    if (action.type == "CHECKOUT"){
+        let checkoutItem = state.checkoutItem;
+        checkoutItem.push(action.product);
+        return {
+            checkoutItem: checkoutItem
+        };
     }
     return state;
 }
