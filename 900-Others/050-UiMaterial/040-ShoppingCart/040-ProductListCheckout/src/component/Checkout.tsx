@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Grid } from "@material-ui/core";
+import { List, ListItem, ListItemText, Typography, ListItemIcon, SvgIcon, FormLabel, Grid, Fab, TextField} from "@material-ui/core";
 import { connect} from "react-redux";
 
 
@@ -9,10 +9,17 @@ import { connect} from "react-redux";
         console.log(state.checkoutItems);
         return {
             checkoutItems: state.checkoutItems,
-            name: state.name
         }
     },
-    (dispatch) => {}
+    (dispatch) => ({
+        addQuantity: (checkoutItem: any) => {
+            dispatch({type: "ADD_QuANTITY", checkoutItem: checkoutItem})
+        },
+        removeQuantity: (checkoutItem: any) => {
+            dispatch({type: "REMOVE_QUANTITY", checkoutItem: checkoutItem})
+        },
+          
+    })
 ) as any)
 export default class Checkout extends React.Component<any, any>{
 
@@ -30,24 +37,49 @@ export default class Checkout extends React.Component<any, any>{
         return (
             <div>
                 <h1>Checkout</h1>
-                <Grid container>
-
-                </Grid>
-                {
-                    this.props.checkoutItems.map(
-                        (checkoutItem)=>{
-                            return (
-                                <div id={checkoutItem.id}>
-                                    {JSON.stringify(checkoutItem)}
-                                </div>
-                            );
-                        }
-                            
-                    )
-                }
-                <div>
-                    {this.props.name}
-                </div>
+                <List>
+                <ListItem>
+                    <ListItemText primary={<Typography variant="h6" >Quantity</Typography>} />
+                    <ListItemText primary={<Typography variant="h6" >Product</Typography>}/>
+                    <ListItemText primary={<Typography variant="h6" >Price</Typography>}/>
+                </ListItem>
+                    {
+                        this.props.checkoutItems.map(
+                            (checkoutItem)=>{
+                                return (
+                                    <ListItem id={checkoutItem.id}>
+                                       
+                                        <ListItemText primary={
+                                            <Grid container>
+                                                <Grid item>
+                                                    <Fab size="small" onClick={()=>{alert("abc")}}>
+                                                        <SvgIcon>
+                                                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                                                        </SvgIcon>
+                                                    </Fab>
+                                                </Grid>
+                                                <Grid item>
+                                                    <TextField style={{width: 30}} value={checkoutItem.quantity} />
+                                                </Grid>
+                                                <Grid item>
+                                                    <Fab size="small" >
+                                                        <SvgIcon>
+                                                            <path d="M19 13H5v-2h14v2z"/>
+                                                        </SvgIcon>
+                                                    </Fab>
+                                                </Grid>
+                                            </Grid>    
+                                        } />
+                                        <ListItemText primary={checkoutItem.name} secondary={checkoutItem.description}/>
+                                        <ListItemText primary={checkoutItem.total}/>
+                                    </ListItem>
+                                );
+                            }
+                                
+                        )
+                    }
+                </List>
+              
             </div>
         );
     }

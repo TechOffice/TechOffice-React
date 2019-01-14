@@ -29,13 +29,13 @@ export default class Product extends React.Component<any, any>{
                             {this.state.product.name}
                         </Typography>
                         <Typography component="p">
-                            {this.state.product.desc}
+                            {this.state.product.description}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
                     <Button size="small" color="primary" onClick={()=>{this.props.checkout(this.state.product)}}>
-                        Share
+                        Checkout
                     </Button>
                 </CardActions>
             </Card>
