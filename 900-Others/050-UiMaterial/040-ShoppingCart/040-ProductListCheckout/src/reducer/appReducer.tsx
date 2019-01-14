@@ -1,16 +1,18 @@
+import { combineReducers } from "redux";
 
-export default (state: any, action: any): any => {
-    console.log(action);
-    if (action.type == "CHECKOUT"){
-
-        let checkoutItem = state.checkoutItem.slice();
-        checkoutItem.push(action.product);
-        console.log(checkoutItem);
-        return {
-            ...state,
-            "checkoutItem": checkoutItem
-        };
+function checkoutItems(state: any = [], action: any){
+    switch(action.type){
+        case "ADD_PRODUCT":
+            let checkoutItems = state.slice();
+            checkoutItems.push(action.product);
+            console.log(checkoutItems);
+            return checkoutItems;
+        default: 
+            return state;
     }
-    return state;
-
 }
+
+
+export default combineReducers({
+    checkoutItems
+});

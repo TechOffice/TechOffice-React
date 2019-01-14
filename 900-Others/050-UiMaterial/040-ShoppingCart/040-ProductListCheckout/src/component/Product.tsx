@@ -5,7 +5,7 @@ import { Card, CardActionArea, CardMedia, CardContent, Typography, CardActions, 
 @(connect( 
     (state) => {},
     (dispatch) => ({
-        checkout: (product) => {dispatch({type: "CHECKOUT", product: product })}
+        checkout: (product) => {dispatch({type: "ADD_PRODUCT", product: product })}
     })
 ) as any)
 export default class Product extends React.Component<any, any>{

@@ -6,9 +6,9 @@ import { connect} from "react-redux";
 @(connect( 
     (state) => {
         console.log("trigger map state to props");
-        console.log(state.checkoutItem);
+        console.log(state.checkoutItems);
         return {
-            checkoutItems: state.checkoutItem,
+            checkoutItems: state.checkoutItems,
             name: state.name
         }
     },

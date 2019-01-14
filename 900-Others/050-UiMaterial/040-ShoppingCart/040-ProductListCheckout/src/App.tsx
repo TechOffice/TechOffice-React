@@ -21,10 +21,7 @@ class App extends React.Component<any, any>{
             productList: null
         };
         this.store = createStore(
-            appReducer, 
-            {
-                checkoutItem: []
-            }
+            appReducer, {}
         );
     }
 
