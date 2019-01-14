@@ -15,6 +15,8 @@ export default class Checkout extends React.Component<any, any>{
 
     constructor(props){
         super(props);
+        this.state = {checkoutItems: props.checkoutItems};
+
     }
 
     componentWillReceiveProps(nextProps){
@@ -28,8 +30,8 @@ export default class Checkout extends React.Component<any, any>{
                 <Grid container>
 
                 </Grid>
-                {this.props.checkoutItems.map((checkoutItem)=><div>{checkoutItem}</div>)}
-                {JSON.stringify(this.props.checkoutItemss)}
+                {this.props.checkoutItems.map((checkoutItem)=><div>1</div>)}
+                {JSON.stringify(this.props.checkoutItems)}
             </div>
         );
     }

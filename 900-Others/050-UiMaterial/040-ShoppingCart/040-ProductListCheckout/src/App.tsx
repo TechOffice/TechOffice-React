@@ -20,7 +20,7 @@ class App extends React.Component<any, any>{
         this.state = {
             productList: null
         };
-        this.store = createStore(appReducer, {checkoutItem: []});
+        this.store = createStore(appReducer, {checkoutItem: [{product: 1}]});
     }
 
     componentWillMount() {
