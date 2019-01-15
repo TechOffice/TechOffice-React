@@ -45,6 +45,16 @@ function checkoutItems(state: any = [], action: any){
                 }
             }
 			return checkoutItems;
+		case "UPDATE_QUANTITY": 
+			var checkoutItems = state.slice();
+			for (var i=0; i<checkoutItems.length; i++){
+                var checkoutItem = checkoutItems[i];
+                if (checkoutItem.id == action.checkoutItem.id){
+                    checkoutItem.quantity = action.quantity;
+                    checkoutItem.total = checkoutItem.quantity * checkoutItem.price;
+                    return checkoutItems;
+                }
+            }
         default: 
             return state;
     }

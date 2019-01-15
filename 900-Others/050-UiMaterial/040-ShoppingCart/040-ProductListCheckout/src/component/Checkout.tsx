@@ -18,7 +18,9 @@ import { connect} from "react-redux";
         removeQuantity: (checkoutItem: any) => {
             dispatch({type: "REMOVE_QUANTITY", checkoutItem: checkoutItem})
         },
-          
+        updateQuantity: (checkoutItem: any, quantity: any) => {
+			dispatch({type: "UPDATE_QUANTITY", checkoutItem: checkoutItem, quantity: quantity})
+		}
     })
 ) as any)
 export default class Checkout extends React.Component<any, any>{
@@ -59,7 +61,7 @@ export default class Checkout extends React.Component<any, any>{
                                                     </Fab>
                                                 </Grid>
                                                 <Grid item>
-                                                    <TextField style={{width: 30}} value={checkoutItem.quantity} />
+                                                    <TextField style={{width: 30}} value={checkoutItem.quantity} onChange={(event)=>{this.props.updateQuantity(checkoutItem, event.target.value)}}/>
                                                 </Grid>
                                                 <Grid item>
                                                     <Fab size="small" onClick={()=>{this.props.removeQuantity(checkoutItem)}}>
