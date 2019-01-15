@@ -7,7 +7,7 @@ function checkoutItems(state: any = [], action: any){
             for (var i=0; i<checkoutItems.length; i++){
                 var checkoutItem = checkoutItems[i];
                 if (checkoutItem.id == action.product.id){
-                    checkoutItem.quantity = checkoutItem.quantity + 1;
+                    checkoutItem.quantity = Number(checkoutItem.quantity) + 1;
                     checkoutItem.total = checkoutItem.quantity * checkoutItem.price;
                     return checkoutItems;
                 }
@@ -23,7 +23,7 @@ function checkoutItems(state: any = [], action: any){
 			for (var i=0; i<checkoutItems.length; i++){
                 var checkoutItem = checkoutItems[i];
                 if (checkoutItem.id == action.checkoutItem.id){
-                    checkoutItem.quantity = checkoutItem.quantity + 1;
+                    checkoutItem.quantity = Number(checkoutItem.quantity) + 1;
                     checkoutItem.total = checkoutItem.quantity * checkoutItem.price;
                     return checkoutItems;
                 }
@@ -35,7 +35,7 @@ function checkoutItems(state: any = [], action: any){
                 var checkoutItem = checkoutItems[i];
                 if (checkoutItem.id == action.checkoutItem.id){
 					if (checkoutItem.quantity > 1){
-						checkoutItem.quantity = checkoutItem.quantity - 1;
+						checkoutItem.quantity = Number(checkoutItem.quantity) - 1;
 						checkoutItem.total = checkoutItem.quantity * checkoutItem.price;
 						return checkoutItems;	
 					}else{
@@ -50,7 +50,7 @@ function checkoutItems(state: any = [], action: any){
 			for (var i=0; i<checkoutItems.length; i++){
                 var checkoutItem = checkoutItems[i];
                 if (checkoutItem.id == action.checkoutItem.id){
-                    checkoutItem.quantity = action.quantity;
+                    checkoutItem.quantity = Number(action.quantity);
                     checkoutItem.total = checkoutItem.quantity * checkoutItem.price;
                     return checkoutItems;
                 }

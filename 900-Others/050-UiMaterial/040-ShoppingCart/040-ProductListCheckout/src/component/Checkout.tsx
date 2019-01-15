@@ -61,7 +61,10 @@ export default class Checkout extends React.Component<any, any>{
                                                     </Fab>
                                                 </Grid>
                                                 <Grid item>
-                                                    <TextField style={{width: 30}} value={checkoutItem.quantity} onChange={(event)=>{this.props.updateQuantity(checkoutItem, event.target.value)}}/>
+                                                    <TextField style={{width: 30}} 
+														InputProps={{maxlength: 3}}
+														value={checkoutItem.quantity} 
+														onChange={(event)=>{this.props.updateQuantity(checkoutItem, event.target.value)}}/>
                                                 </Grid>
                                                 <Grid item>
                                                     <Fab size="small" onClick={()=>{this.props.removeQuantity(checkoutItem)}}>
