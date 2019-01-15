@@ -13,7 +13,7 @@ import { connect} from "react-redux";
     },
     (dispatch) => ({
         addQuantity: (checkoutItem: any) => {
-            dispatch({type: "ADD_QuANTITY", checkoutItem: checkoutItem})
+            dispatch({type: "ADD_QUANTITY", checkoutItem: checkoutItem})
         },
         removeQuantity: (checkoutItem: any) => {
             dispatch({type: "REMOVE_QUANTITY", checkoutItem: checkoutItem})
@@ -52,7 +52,7 @@ export default class Checkout extends React.Component<any, any>{
                                         <ListItemText primary={
                                             <Grid container>
                                                 <Grid item>
-                                                    <Fab size="small" onClick={()=>{alert("abc")}}>
+                                                    <Fab size="small" onClick={()=>{this.props.addQuantity(checkoutItem)}}>
                                                         <SvgIcon>
                                                             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
                                                         </SvgIcon>
@@ -62,7 +62,7 @@ export default class Checkout extends React.Component<any, any>{
                                                     <TextField style={{width: 30}} value={checkoutItem.quantity} />
                                                 </Grid>
                                                 <Grid item>
-                                                    <Fab size="small" >
+                                                    <Fab size="small" onClick={()=>{this.props.removeQuantity(checkoutItem)}}>
                                                         <SvgIcon>
                                                             <path d="M19 13H5v-2h14v2z"/>
                                                         </SvgIcon>

@@ -3,8 +3,7 @@ import { combineReducers } from "redux";
 function checkoutItems(state: any = [], action: any){
     switch(action.type){
         case "ADD_PRODUCT":
-            let checkoutItems = state.slice();
-
+            var checkoutItems = state.slice();
             for (var i=0; i<checkoutItems.length; i++){
                 var checkoutItem = checkoutItems[i];
                 if (checkoutItem.id == action.product.id){
@@ -19,6 +18,33 @@ function checkoutItems(state: any = [], action: any){
             checkoutItems.push(checkoutItem);
             console.log(checkoutItems);
             return checkoutItems;
+		case "ADD_QUANTITY":
+			var checkoutItems = state.slice();
+			for (var i=0; i<checkoutItems.length; i++){
+                var checkoutItem = checkoutItems[i];
+                if (checkoutItem.id == action.checkoutItem.id){
+                    checkoutItem.quantity = checkoutItem.quantity + 1;
+                    checkoutItem.total = checkoutItem.quantity * checkoutItem.price;
+                    return checkoutItems;
+                }
+            }
+			return checkoutItems;
+		case "REMOVE_QUANTITY":
+			var checkoutItems = state.slice();
+			for (var i=0; i<checkoutItems.length; i++){
+                var checkoutItem = checkoutItems[i];
+                if (checkoutItem.id == action.checkoutItem.id){
+					if (checkoutItem.quantity > 1){
+						checkoutItem.quantity = checkoutItem.quantity - 1;
+						checkoutItem.total = checkoutItem.quantity * checkoutItem.price;
+						return checkoutItems;	
+					}else{
+						checkoutItems.splice(checkoutItems.indexOf(checkoutItem), 1);
+						return checkoutItems;
+					}
+                }
+            }
+			return checkoutItems;
         default: 
             return state;
     }
