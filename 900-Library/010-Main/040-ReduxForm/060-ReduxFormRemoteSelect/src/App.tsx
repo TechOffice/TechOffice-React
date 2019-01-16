@@ -63,7 +63,7 @@ class App extends React.Component<any, any>{
     render(){
         return (
             <div>
-                {this.props.simple.loading && <CircularProgress />}
+                {this.props.form.loading && <CircularProgress />}
                 <h1>Hello World</h1>
                     <SimpleFormComponent/>
                 <div>
