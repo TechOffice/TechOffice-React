@@ -51,6 +51,9 @@ function checkoutItems(state: any = [], action: any){
                 var checkoutItem = checkoutItems[i];
                 if (checkoutItem.id == action.checkoutItem.id){
                     checkoutItem.quantity = Number(action.quantity);
+                    if (isNaN(checkoutItem.quantity)){
+                        checkoutItem.quantity = 0;
+                    }
                     checkoutItem.total = checkoutItem.quantity * checkoutItem.price;
                     return checkoutItems;
                 }

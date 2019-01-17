@@ -1,5 +1,5 @@
 import * as React from "react";
-import { List, ListItem, ListItemText, Typography, ListItemIcon, SvgIcon, FormLabel, Grid, Fab, TextField} from "@material-ui/core";
+import { List, ListItem, ListItemText, Typography, ListItemIcon, SvgIcon, FormLabel, Grid, Fab, TextField, Divider} from "@material-ui/core";
 import { connect} from "react-redux";
 
 
@@ -62,7 +62,7 @@ export default class Checkout extends React.Component<any, any>{
                                                 </Grid>
                                                 <Grid item>
                                                     <TextField style={{width: 30}} 
-														InputProps={{maxlength: 3}}
+														inputProps={{maxlength: 3}}
 														value={checkoutItem.quantity} 
 														onChange={(event)=>{this.props.updateQuantity(checkoutItem, event.target.value)}}/>
                                                 </Grid>
@@ -84,7 +84,12 @@ export default class Checkout extends React.Component<any, any>{
                         )
                     }
                 </List>
-              
+                <Divider variant="middle" />
+                <div>
+                    <Typography variant="h6" align="right" style={{marginLeft: 100}}>
+                        Totol Price: {this.props.checkoutItems.map((checkoutItem)=>checkoutItem.total).reduce((a,b)=>(a+b), 0)}
+                    </Typography>
+                </div>
             </div>
         );
     }
