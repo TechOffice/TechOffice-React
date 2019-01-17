@@ -29,7 +29,7 @@ export default class RemoteSelect extends React.Component<any, any>{
                 type: "COMPLETE_LOADING",
                 name: this.props.input.name
             })                     
-        }, 300000);
+        }, 3000);
     }
 
     render(){
