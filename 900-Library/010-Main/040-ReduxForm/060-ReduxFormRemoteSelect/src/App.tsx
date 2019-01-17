@@ -4,7 +4,7 @@ import { combineReducers, createStore } from "redux";
 import { reducer } from 'redux-form';
 import SimpleFormComponent from "./SimpleFormComponent";
 import { Provider, connect } from "react-redux";
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress, Paper, Grid } from "@material-ui/core";
 
 const rootReducer = combineReducers({
     form: reducer.plugin({
@@ -14,17 +14,14 @@ const rootReducer = combineReducers({
                     if (!action.name){
                         return state;
                     }
-                    if (!state){
-                        state = {};
-                    }
                     return  {
                         ...state,
-                        loading: true
+                        loaded: false
                     };
                 case "COMPLETE_LOADING":
                     return {
                         ...state,
-                        loading: false
+                        loaded: true
                     }
                 default:
                     return state;
@@ -40,8 +37,9 @@ const store = createStore(rootReducer, {});
     function(state: any){
         // console.log(state);
         return {
-            simple: state && state.form && state.form.simple && state.form.simple.values ? state.form.simple.values : {},
-            form: state && state.form && state.form.simple ? state.form.simple : {}
+            values: state && state.form && state.form.simple && state.form.simple.values ? state.form.simple.values : {},
+            simple: state && state.form && state.form.simple ? state.form.simple : {},
+            form: state.form
         };
     } ,
     // map dispatch to props
@@ -63,19 +61,36 @@ class App extends React.Component<any, any>{
     render(){
         return (
             <div>
-                {this.props.form.loading && <CircularProgress />}
-                <h1>Hello World</h1>
-                    <SimpleFormComponent/>
-                <div>
-                    {this.props.simple.simpleTextField1}
-                </div>
-                <div>
-                    {this.props.simple.simpleSelectField}
-                </div>
-                <div>
-                    {this.props.simple.remoteSelectField}
-                </div>
-            </div>            
+                <h1>Remote Select Example</h1>
+                <Grid container>
+                    <Grid item>
+                        <h2>Left Content</h2>
+                    </Grid>
+                    <Grid item>
+                        <Paper style={{position: 'relative'}}>
+                            {this.props.form.loading && 
+                                !this.props.form.loading.loaded && 
+                                <div style={{position: 'absolute', zIndex: 100, width: '100%', height: '100%', backgroundColor: 'black', opacity: 0.5}}>
+                                    <CircularProgress style={{position: 'absolute', top: '50%', left: '50%'}}/>
+                                </div>
+                            }
+                            <SimpleFormComponent/>
+                            <div>
+                                {this.props.values.simpleTextField1}
+                            </div>
+                            <div>
+                                {this.props.values.simpleSelectField}
+                            </div>
+                            <div>
+                                {this.props.values.remoteSelectField}
+                            </div>
+                        </Paper>           
+                    </Grid>
+                    <Grid item>
+                        <h2>Right Content</h2>
+                    </Grid>
+                </Grid>
+            </div> 
         )
     }
 }

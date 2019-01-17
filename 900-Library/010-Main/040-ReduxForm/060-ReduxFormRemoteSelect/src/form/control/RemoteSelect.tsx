@@ -27,9 +27,9 @@ export default class RemoteSelect extends React.Component<any, any>{
             this.setState({select: select});
             this.props.meta.dispatch({
                 type: "COMPLETE_LOADING",
-            name: this.props.input.name
+                name: this.props.input.name
             })                     
-        }, 30000);
+        }, 300000);
     }
 
     render(){

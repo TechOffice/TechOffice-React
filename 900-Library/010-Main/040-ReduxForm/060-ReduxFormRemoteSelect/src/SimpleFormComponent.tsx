@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Field, reduxForm, FormProps, FormErrors, InjectedFormProps } from 'redux-form';
+import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 import TextField from './form/control/TextField';
 import { connect } from 'react-redux';
 import { Grid, MenuItem } from '@material-ui/core';
