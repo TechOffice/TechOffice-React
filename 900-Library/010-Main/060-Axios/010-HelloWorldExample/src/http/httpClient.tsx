@@ -13,7 +13,7 @@ httpClient.interceptors.request.use(function (config) {
 });
 
 httpClient.interceptors.response.use(function (response) {
-    store.dispatch({type: "REQUEST"});
+    store.dispatch({type: "REQUEST_DONE"});
     return response;
 }, function (error) {
     store.dispatch({type: "REQUEST_DONE"});

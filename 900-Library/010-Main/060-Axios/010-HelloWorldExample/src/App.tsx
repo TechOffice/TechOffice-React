@@ -9,18 +9,12 @@ import httpClient from "./http/httpClient";
     // map state to props
     function(state: any){
         return {
-            counter: state.counter
+            loading: state.loading
         }
     },
     // map dispatch to props
     function(dispatch){
         return {
-            onClick: function(n){
-                dispatch({
-                    type: "ADD",
-                    data: n
-                })
-            }
         }
     }
 ) as any)
@@ -31,21 +25,21 @@ class App extends React.Component<any, any>{
         this.state = {counter: props.counter};
     }
     
-    componentDidMount(){
-        httpClient.get("static/data/test.json").then((response => {
-            console.log(response);
-        }));
-        httpClient.get("static/data/test.json").then((response => {
-            console.log(response);
-        }));
+    getTestData(){
+        for (var i=0; i< 100; i++){
+            httpClient.get("static/data/test.json").then((response => {
+                console.log(response);
+            }));
+        }
     }
 
     render(){
         return (
             <div>
                 <h1>Hello World</h1>
+                {this.props.loading && this.props.loading.inProgress && <div>Loading</div>}
                 <div>
-                    <button onClick={this.props.onClick.bind(this, 1)}>Add</button>
+                    <button onClick={()=>{this.getTestData()}}>Add</button>
                 </div>
                 <div>Number: {this.props.counter}</div>
             </div>            
