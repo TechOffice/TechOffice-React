@@ -28,6 +28,10 @@ export default class SimpleFormComponent extends React.Component<InjectedFormPro
         this.state = props;
     }
 
+    componentWillReceiveProps(nextProps){
+        console.log('componentWillReceiveProps', nextProps);        
+    }
+
     render(){
         return (
             <form>
