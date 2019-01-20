@@ -18,7 +18,14 @@ export default class SimpleFormComponent extends React.Component<InjectedFormPro
     }
 
     submit(values){
-        debugger;
+        var formData = new FormData();
+        for (var key in values){
+            var value = values[key];
+            if (value instanceof File){
+                formData.append(key, value);
+            }
+        }
+        
     }
 
     render(){
