@@ -21,7 +21,7 @@ export default class SimpleFormComponent extends React.Component<InjectedFormPro
         return (
             <Paper>
                 <form noValidate onSubmit={this.props.handleSubmit}>
-                    <Grid container>
+                    <Grid container spacing={8}>
                         <Grid container spacing={16} item xs={2}>
                             <Grid container item>
                                 <Grid item>
@@ -61,13 +61,6 @@ export default class SimpleFormComponent extends React.Component<InjectedFormPro
                         </Grid>
 
                         <Grid item xs={6}>
-                            <Grid container>
-                                <Grid item>
-                                    <Button variant="contained" color="primary">
-                                        Select
-                                    </Button>
-                                </Grid>
-                            </Grid>
                             <Grid container>
                                 <Grid item>
                                     <FileInputButton/>
