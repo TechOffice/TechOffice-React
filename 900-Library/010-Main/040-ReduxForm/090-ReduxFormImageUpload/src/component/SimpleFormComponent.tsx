@@ -6,6 +6,7 @@ import RadioGroup from '../form/RadioGroup';
 import Select from '../form/Select';
 import Datepicker from '../form/Datepicker';
 import FileInputButton from '../form/FileInputButton';
+import httpClient from '../http/httpClient';
 
 /**
  * Simple Form Component 
@@ -27,6 +28,10 @@ export default class SimpleFormComponent extends React.Component<InjectedFormPro
         }
         formData.append("data", JSON.stringify(values));
         debugger;
+        httpClient.post("./api/testMultipart", formData).then((res)=>{
+            debugger;
+        })
+        
     }
 
     render(){

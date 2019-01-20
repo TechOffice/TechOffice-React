@@ -13,7 +13,10 @@ module.exports = {
 		contentBase: "./",
 		hot: true,
 		proxy: {
-			"/api": "http://localhost:7003"
+			'/api': {
+				target: 'http://localhost:7003',
+				pathRewrite: {'^/api' : ''}		
+			}
 		}
 	},
 	module: {
