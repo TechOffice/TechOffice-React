@@ -25,7 +25,8 @@ export default class SimpleFormComponent extends React.Component<InjectedFormPro
                 formData.append(key, value);
             }
         }
-        
+        formData.append("data", JSON.stringify(values));
+        debugger;
     }
 
     render(){
