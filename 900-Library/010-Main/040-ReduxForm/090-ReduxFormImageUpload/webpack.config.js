@@ -11,7 +11,10 @@ module.exports = {
 	devtool: "eval-source-map",
 	devServer: {
 		contentBase: "./",
-		hot: true
+		hot: true,
+		proxy: {
+			"/api": "http://localhost:7003"
+		}
 	},
 	module: {
 		rules: [
