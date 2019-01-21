@@ -3,7 +3,6 @@ import { FormControl, TextField, FormLabel, RadioGroup, FormGroup } from "@mater
 
 
 export default (field: any) => {
-    console.log(field);
     return(
         <FormGroup >
             <FormControl>

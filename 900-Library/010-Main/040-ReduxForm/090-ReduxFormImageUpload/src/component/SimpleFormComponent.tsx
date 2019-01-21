@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Field, reduxForm, FormProps, FormErrors, InjectedFormProps } from 'redux-form';
+import { Field, reduxForm, FormProps, FormErrors, InjectedFormProps, Fields } from 'redux-form';
 import TextField from '../form/TextField';
 import { Grid, FormControlLabel, Radio, Paper, MenuItem, Button } from '@material-ui/core';
 import RadioGroup from '../form/RadioGroup';
@@ -7,6 +7,7 @@ import Select from '../form/Select';
 import Datepicker from '../form/Datepicker';
 import FileInputButton from '../form/FileInputButton';
 import httpClient from '../http/httpClient';
+import FileImagePreviewButton from '../form/FileImagePreviewButton';
 
 /**
  * Simple Form Component 
@@ -26,9 +27,11 @@ export default class SimpleFormComponent extends React.Component<InjectedFormPro
                 formData.append(key, value);
             }
         }
-        formData.append("data", JSON.stringify(values));
-        debugger;
-        httpClient.post("./api/testMultipart", formData).then((res)=>{
+       
+        formData.append("data", new Blob([JSON.stringify(values)], {
+            type: 'application/json'
+        }));
+        httpClient.post("./api/testMultipart", formData, {headers:{ 'Content-Type': 'multipart/form-data'} }).then((res)=>{
             debugger;
         })
         
@@ -80,7 +83,7 @@ export default class SimpleFormComponent extends React.Component<InjectedFormPro
                         <Grid item xs={6}>
                             <Grid container>
                                 <Grid item>
-                                    <Field name="profilePic" component={FileInputButton}/>
+                                    <Fields names={["profilePic"]} component={FileImagePreviewButton}/>
                                 </Grid>
                             </Grid>
                         </Grid>
