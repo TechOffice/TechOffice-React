@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { FormControl, TextField, FormLabel, RadioGroup, FormGroup } from "@material-ui/core";
+import { FormControl, FormLabel, RadioGroup, FormGroup} from "@material-ui/core";
 
 
 export default (field: any) => {
     return(
         <FormGroup >
+            <FormLabel>{field.label}</FormLabel>
             <FormControl>
-                <FormLabel>{field.label}</FormLabel>
                 <RadioGroup
                     {...field.input}>
                     {field.children}

@@ -1,4 +1,4 @@
-import { TextField, FormGroup } from "@material-ui/core";
+import { TextField, FormGroup, FormLabel } from "@material-ui/core";
 import * as React from 'react';
 
 /**
@@ -8,7 +8,8 @@ import * as React from 'react';
  */
 export default (field: any) => (
     <FormGroup>
-        <TextField {...field.input} label={field.label} required={field.required} disabled={field.disabled}/>
+        <FormLabel>{field.label}</FormLabel>
+        <TextField {...field.input} required={field.required} disabled={field.disabled}/>
         {field.meta.error && <span style={{color: "red"}}>{field.meta.error}</span>}
     </FormGroup>
 );
