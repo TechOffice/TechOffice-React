@@ -2,8 +2,11 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { combineReducers, createStore } from "redux";
 import { reducer } from 'redux-form';
-import SimpleFormComponent from "./SimpleFormComponent";
+import SimpleFormComponent from "./component/SearchComponent";
 import { Provider, connect } from "react-redux";
+import SearchComponent from "./component/SearchComponent";
+import ResultComponent from "./component/ResultComponent";
+import { Paper, Divider } from "@material-ui/core";
 
 const rootReducer = combineReducers({
     form: reducer
@@ -31,10 +34,10 @@ class App extends React.Component<any, any>{
         return (
             <div>
                 <h1>Hello World</h1>
-                    <SimpleFormComponent/>
-                <div>
-                    {this.props.simple.firstName}
-                </div>
+                <Paper>
+                    <SearchComponent />
+                    <ResultComponent/>
+                </Paper>
             </div>            
         )
     }
