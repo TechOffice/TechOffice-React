@@ -39,7 +39,7 @@ export default class ResultComponent extends React.Component<InjectedFormProps |
 
     render(){
         return (
-            <Paper style={{maxWidth: 300}}>
+            <Paper style={{maxWidth: 600}}>
                 <List>
                 {
                     this.state.memberList.map(value => (

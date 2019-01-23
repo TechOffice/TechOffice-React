@@ -42,7 +42,7 @@ export default class SearchResultDetailComponent extends React.Component<Injecte
             <Paper style={{padding: 10}}>
                 <form noValidate onSubmit={this.props.handleSubmit(this.submit)}>
                     <Grid container spacing={24}>
-                        <Grid container spacing={16} item xs={2}>
+                        <Grid container spacing={16} item xs={5}>
                             <Grid container item>
                                 <Grid item>
                                     <Field name="name" label="Name" component={TextField}/>
@@ -72,15 +72,16 @@ export default class SearchResultDetailComponent extends React.Component<Injecte
                             </Grid>
                             <Grid container item>
                                 <Grid item>
-                                    <Field name="grade" label="Grade" component={RadioGroup}>
-                                        <FormControlLabel value="1" control={<Radio />} label="Grade 1" />
-                                        <FormControlLabel value="2" control={<Radio />} label="Grade 1" />
+                                    <Field name="grade" label="Grade" component={Select}>
+                                        <MenuItem value={1}>Grade 1</MenuItem>
+                                        <MenuItem value={2}>Grade 2</MenuItem>
+                                        <MenuItem value={3}>Grade 3</MenuItem>
                                     </Field>
                                 </Grid>
                             </Grid>
                         </Grid>
 
-                        <Grid item xs={6}>
+                        <Grid item xs={3}>
                             <Grid container>
                                 <Grid item>
                                     <Fields names={["profilePic"]} component={FileImagePreviewButton}/>

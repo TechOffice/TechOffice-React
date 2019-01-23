@@ -42,12 +42,11 @@ class App extends React.Component<any, any>{
     render(){
         return (
             <div>
-                <h1>Hello World</h1>
                 <Grid container spacing={24}>
-                    <Grid item>
+                    <Grid item xs={6}>
                             <SearchPanelComponent/>
                     </Grid>
-                    <Grid item>
+                    <Grid item xs={6}>
                         <SearchResultDetailComponent onSubmit={this.handleSimpleFormSubmit}/>
                     </Grid>
                 </Grid>

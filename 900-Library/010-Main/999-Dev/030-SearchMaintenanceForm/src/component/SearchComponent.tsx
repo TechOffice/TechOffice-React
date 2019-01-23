@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {  reduxForm, InjectedFormProps } from 'redux-form';
-import TextField from "@material-ui/core/TextField";
+import {  reduxForm, InjectedFormProps, Field } from 'redux-form';
 import SearchIcon from '@material-ui/icons/Search';
 import { InputBase } from '@material-ui/core';
 import { fade } from '@material-ui/core/styles/colorManipulator';
+import TextField from '../form/TextField';
 
 const textField = field=><TextField {...field.input}/>
 
@@ -18,10 +18,10 @@ export default class SearchComponent extends React.Component<InjectedFormProps |
         return (
             <div style={{
                 position: 'relative', 
-                maxWidth: 300,
+                maxWidth: 600,
                 marginBottom: 30
             }}> 
-                <TextField placeholder="Search…" variant="outlined" style={{width: '100%'}}/>
+                <Field name="search" component={TextField} placeholder="Search.."/>
                 <div style={{
                     position: 'absolute',
                     display: 'flex',

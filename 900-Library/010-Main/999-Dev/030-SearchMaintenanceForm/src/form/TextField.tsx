@@ -9,7 +9,11 @@ import * as React from 'react';
 export default (field: any) => (
     <FormGroup>
         <FormLabel>{field.label}</FormLabel>
-        <TextField {...field.input} required={field.required} disabled={field.disabled}/>
+        <TextField variant="outlined" 
+            {...field}
+            label={null}
+            {...field.input} 
+            style={{height:35}}/>
         {field.meta.error && <span style={{color: "red"}}>{field.meta.error}</span>}
     </FormGroup>
 );

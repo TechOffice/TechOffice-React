@@ -40,7 +40,7 @@ export default class FileImagePreviewButton extends React.Component<any, any>{
             <div>
                 <Card style={{maxWidth: 600}}>
                     <CardContent>
-                        <CardMedia style={{height: 150, width: 100}} image={this.state.imageSrc}/>
+                        <CardMedia style={{height: 150, width: 150}} image={this.state.imageSrc}/>
                     </CardContent>
                 </Card>
                 <Button variant="contained" component="label" color="primary">
