@@ -5,8 +5,8 @@ import { reducer } from 'redux-form';
 import SearchResultDetailComponent from "./component/SearchResultDetailComponent";
 import { Provider, connect } from "react-redux";
 import SearchPanelComponent from "./component/SearchPanelComponent";
-import { Grid, AppBar, Toolbar, Drawer, Paper, IconButton } from "@material-ui/core";
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import { Grid, AppBar, Toolbar, Drawer, Paper, IconButton, List, ListItem, ListItemIcon } from "@material-ui/core";
+import InboxIcon from '@material-ui/icons/Inbox';
 
 const rootReducer = combineReducers({
     form: reducer
@@ -49,16 +49,18 @@ class App extends React.Component<any, any>{
                 <AppBar position="static" style={{marginBottom: 30}}>
                     <Toolbar></Toolbar>
                 </AppBar>
-                <Grid container spacing={24}>
-                    <Grid item xs={6}>
-                            <SearchPanelComponent/>
+                <div style={{flexGrow: 1}}>
+                    <Grid container spacing={24}>
+                        <Grid item xs={6}>
+                                <SearchPanelComponent/>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <SearchResultDetailComponent onSubmit={this.handleSimpleFormSubmit}/>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={6}>
-                        <SearchResultDetailComponent onSubmit={this.handleSimpleFormSubmit}/>
-                    </Grid>
-                </Grid>
-                <div>
-                    {JSON.stringify(this.props.simple)}
+                    <div>
+                        {JSON.stringify(this.props.simple)}
+                    </div>
                 </div>
             </div>            
         )
