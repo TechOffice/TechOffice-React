@@ -6,7 +6,9 @@ import SearchResultDetailComponent from "./component/SearchResultDetailComponent
 import { Provider, connect } from "react-redux";
 import SearchPanelComponent from "./component/SearchPanelComponent";
 import { Grid, AppBar, Toolbar, Drawer, Paper, IconButton, List, ListItem, ListItemIcon } from "@material-ui/core";
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import InboxIcon from '@material-ui/icons/Inbox';
+import MailIcon from '@material-ui/icons/Mail';
 
 const rootReducer = combineReducers({
     form: reducer
@@ -45,11 +47,30 @@ class App extends React.Component<any, any>{
 
     render(){
         return (
-            <div>
-                <AppBar position="static" style={{marginBottom: 30}}>
+            <div style={{ display: 'flex'}}>
+                <AppBar position="fixed" style={{zIndex: 100000000, height: 50}}>
                     <Toolbar></Toolbar>
                 </AppBar>
-                <div style={{flexGrow: 1}}>
+                <Drawer
+                    variant="permanent"
+                    style={{flexShrink: 0, width: 80, paddingTop: 50}}>
+                    <Paper >
+                        <div style={{height: 50}}></div>
+                        <List>
+                            <ListItem button >
+                                <ListItemIcon><ChevronRightIcon/></ListItemIcon>
+                            </ListItem>
+                            <ListItem button >
+                                 <ListItemIcon><InboxIcon /></ListItemIcon>
+                            </ListItem>
+                            <ListItem button >
+                                <ListItemIcon><MailIcon /></ListItemIcon>
+                            </ListItem>
+                        </List>
+                    </Paper>
+                </Drawer>
+                <div >
+                    <div style={{height: 50}}></div>
                     <Grid container spacing={24}>
                         <Grid item xs={6}>
                                 <SearchPanelComponent/>
