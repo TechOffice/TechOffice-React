@@ -6,6 +6,9 @@ import { Provider, connect } from "react-redux";
 import { AppBar, Toolbar } from "@material-ui/core";
 import MenuComponent from "./component/MenuComponent";
 import BookingCalenderComponent from "./component/booking/BookingCalendarComponent";
+import { MuiPickersUtilsProvider } from 'material-ui-pickers';
+import MomentUtils from '@date-io/moment';
+
 
 
 const rootReducer = combineReducers({
@@ -62,7 +65,9 @@ class App extends React.Component<any, any>{
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <MuiPickersUtilsProvider utils={MomentUtils}>
+            <App />
+        </MuiPickersUtilsProvider>
     </Provider>, 
 document.getElementById('app'));
 
