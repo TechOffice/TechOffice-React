@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Paper, Grid, List, ListItem, ListItemText, Button, Popper } from "@material-ui/core";
+import { Paper, Grid, List, ListItem, ListItemText, Button, Popper, FormControl } from "@material-ui/core";
 import BookingTimeslotPopperComponent from "./BookingTimeslotPopperComponent";
 import BookingTimeslotComponent from "./BookingTimeSlotComponent";
 
@@ -65,7 +65,31 @@ export default class BookingItemComponent extends React.Component<any, any>{
                                         <ListItem dense divider>
                                             <Button variant="contained" fullWidth color={timeslot.booked? "primary": "default"}
                                                 onClick={(event)=>{this.openTimeslotDetail(event, timeslot)}}>
-                                                {timeslot.timeslotDesc} 
+                                                <FormControl>
+                                                    {timeslot.booked
+                                                        ? 
+                                                            <Grid container>
+                                                                <Grid item>
+                                                                    <Grid container>
+                                                                        <Grid item>
+                                                                            {timeslot.timeslotDesc}
+                                                                        </Grid>
+                                                                    </Grid>
+                                                                    <Grid container>
+                                                                        <Grid item>
+                                                                            Name:
+                                                                        </Grid>
+                                                                    </Grid>
+                                                                </Grid>
+                                                            </Grid>
+                                                        : 
+                                                            <Grid container>
+                                                                <Grid item>
+                                                                    {timeslot.timeslotDesc}
+                                                                </Grid>
+                                                            </Grid>
+                                                    }
+                                                </FormControl>
                                             </Button>
                                         </ListItem>
                                     )
