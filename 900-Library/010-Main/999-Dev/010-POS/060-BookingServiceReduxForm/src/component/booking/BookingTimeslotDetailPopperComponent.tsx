@@ -7,7 +7,7 @@ import BookingTimeslotDetailViewComponent from "./BookingTimeslotDetailViewCompo
 
 
 @(connect(
-    (state)=>{
+    (state: any)=>{
         return {
             bookingTimeslotDetailPopper: state.bookingCalender.bookingTimeslotDetailPopper
         }
@@ -15,7 +15,7 @@ import BookingTimeslotDetailViewComponent from "./BookingTimeslotDetailViewCompo
     (dispatch)=>({
 
     })
-))
+) as any)
 export default class BookingTimeslotDetailPopperComponent extends React.Component<any, any>{
     value;
 

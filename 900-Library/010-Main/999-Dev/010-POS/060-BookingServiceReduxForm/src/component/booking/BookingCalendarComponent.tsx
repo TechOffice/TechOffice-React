@@ -6,7 +6,7 @@ import bookingCalenderMockDataService from '../../service/mock/bookingCalenderMo
 import BookingTimeslotDetailPopperComponent from './BookingTimeslotDetailPopperComponent';
 
 @(connect(
-    (state)=>{
+    (state: any)=>{
         return {
             bookingCalender: state.bookingCalender
         }
@@ -19,7 +19,7 @@ import BookingTimeslotDetailPopperComponent from './BookingTimeslotDetailPopperC
             })
         }
     })
-))
+) as any)
 export default class BookingCalenderComponent extends React.Component<any, any>{
     bookingTimeslotPopperComponent: any;
 

@@ -6,7 +6,7 @@ import BookingTimeslotAvailableComponent from "./BookingTimeslotAvailableCompone
 import { connect } from "react-redux";
 
 @(connect(
-    (state, ownProps)=>{
+    (state: any, ownProps: any)=>{
         return {
             bookingItem: state.bookingCalender.bookingItemList[ownProps.bookingItemIndex]
         };
@@ -20,7 +20,7 @@ import { connect } from "react-redux";
             })
         }
     })
-))
+) as any)
 export default class BookingItemComponent extends React.Component<any, any>{
 
     constructor(props){
