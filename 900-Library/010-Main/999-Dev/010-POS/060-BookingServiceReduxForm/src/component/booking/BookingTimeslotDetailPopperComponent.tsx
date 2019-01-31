@@ -2,6 +2,8 @@ import * as React from "react";
 import { Paper, Popper, Grid, Radio, RadioGroup, FormControlLabel, Checkbox, TextField, FormControl, InputLabel } from "@material-ui/core";
 import { DateTimePicker } from "material-ui-pickers";
 import { connect } from "react-redux";
+import BookingTimeslotDetailEditComponent from "./BookingTimeslotDetailEditComponent";
+import BookingTimeslotDetailViewComponent from "./BookingTimeslotDetailViewComponent";
 
 
 @(connect(
@@ -24,62 +26,12 @@ export default class BookingTimeslotDetailPopperComponent extends React.Componen
     render(){
         return (
             <Popper open={this.props.bookingTimeslotDetailPopper.timeslotDetailOpen} anchorEl={this.props.bookingTimeslotDetailPopper.timeslotDetailTarget} placement="right-start" >
-                <Paper>
-                    <Grid container>
-                        <Grid item>
-                            <RadioGroup row>
-                                <FormControlLabel value="memeber" label="Member" control={<Radio/>}/>
-                                <FormControlLabel value="walk-in" label="Walk-in" control={<Radio/>}/>
-                            </RadioGroup>
-                        </Grid>
-                    </Grid>
-                    <Grid container>
-                        <Grid item>
-                            <RadioGroup row>
-                                <FormControlLabel value="male" label="Male" control={<Radio/>}/>
-                                <FormControlLabel value="female" label="Female" control={<Radio/>}/>
-                            </RadioGroup>
-                        </Grid>
-                    </Grid>
-                    <Grid container>
-                        <Grid item>
-                            <FormControlLabel label="Multiple People" control={<Checkbox/>}/>
-                        </Grid>
-                        <Grid item>
-                            <TextField/>
-                        </Grid>
-                    </Grid>
-                    <Grid container>
-                        <Grid item>
-                            <TextField label="Member Name"/>
-                        </Grid>
-                    </Grid>
-                    <Grid container>
-                        <Grid item>
-                            <TextField label="Contact Phone"/>
-                        </Grid>
-                    </Grid>
-                    <Grid container>
-                        <Grid item>
-                            <DateTimePicker value={this.value} onChange={(date)=>{this.value = date}}/>
-                        </Grid>
-                    </Grid>
-                    <Grid container>
-                        <Grid item>
-                            <DateTimePicker value={this.value} onChange={(date)=>{this.value = date}}/>
-                        </Grid>
-                    </Grid>
-                    <Grid container>
-                        <Grid item>
-                            <FormControlLabel label="Wash" control={<Checkbox/>}/>
-                        </Grid>
-                    </Grid>
-                    <Grid container>
-                        <Grid item>
-                            <TextField label="Remark" multiline/>
-                        </Grid>
-                    </Grid>
-                </Paper>
+                {
+                    this.props.bookingTimeslotDetailPopper.selectedTimeslot && 
+                    this.props.bookingTimeslotDetailPopper.selectedTimeslot.booked 
+                        ? <BookingTimeslotDetailViewComponent/>
+                        : <BookingTimeslotDetailEditComponent/>
+                }                
             </Popper>
         );
     }
