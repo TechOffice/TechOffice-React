@@ -11,20 +11,6 @@ export default class BookingItemComponent extends React.Component<any, any>{
 
     constructor(props){
         super(props);
-        var timeslotList = bookingCalendarService.getTimeslotList([	{
-            id: 1,
-          startTime: new Date(2019, 0, 31, 11),
-          endTime: new Date(2019, 0, 31, 11, 30)
-        },
-        {
-            id: 2,
-          startTime: new Date(2019, 0, 31, 13),
-          endTime: new Date(2019, 0, 31, 15, 30)
-        }]);
-        this.state = {
-            ...props.bookingItem,
-            timeslotList
-        }
         this.bookingTimeslotPopperComponent = React.createRef();
     }
 
@@ -43,7 +29,7 @@ export default class BookingItemComponent extends React.Component<any, any>{
                     <Grid item>
                        <List>
                             {
-                                this.state.timeslotList.map(timeslot => {
+                                this.props.bookingItem.timeslotList.map(timeslot => {
                                     return (
                                         <ListItem dense divider>
                                             <Button variant="contained" fullWidth color={timeslot.booked? "primary": "default"}

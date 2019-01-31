@@ -1,6 +1,9 @@
 import { Paper, Grid } from '@material-ui/core';
 import BookingItemComponent from './BookingItemComponent';
 import * as React from 'react';
+import { connect } from "react-redux";
+import bookingCalendarService from '../../service/bookingCalendarService';
+
 
 export default class BookingCalenderComponent extends React.Component<any, any>{
 
@@ -10,7 +13,19 @@ export default class BookingCalenderComponent extends React.Component<any, any>{
             bookingItems: [
                 {
                     id: 1,
-                    desc: "Testing 1"
+                    desc: "Testing 1",
+                    bookedTimeslotList: [
+                        {
+                            id: 1,
+                            startTime: new Date(2019, 0, 31, 11),
+                            endTime: new Date(2019, 0, 31, 11, 30)
+                        },
+                        {
+                            id: 2,
+                            startTime: new Date(2019, 0, 31, 13),
+                            endTime: new Date(2019, 0, 31, 15, 30)
+                        }
+                    ],
                 },
                 {
                     id: 2,
@@ -18,6 +33,9 @@ export default class BookingCalenderComponent extends React.Component<any, any>{
                 }
             ]
         };
+        this.state.bookingItems.forEach(function(bookingItem){
+            bookingItem.timeslotList = bookingCalendarService.getTimeslotList(bookingItem.bookedTimeslotList);
+        });
     }
 
     render(){
