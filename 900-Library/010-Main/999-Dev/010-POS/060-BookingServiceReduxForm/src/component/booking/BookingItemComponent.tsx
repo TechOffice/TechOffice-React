@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Paper, Grid, List, ListItem, ListItemText, Button, Popper, FormControl } from "@material-ui/core";
 import BookingTimeslotDetailPopperComponent from "./BookingTimeslotDetailPopperComponent";
-import BookingUnavailableTimeslotComponent from "./BookingUnavailableTimeslotComponent";
-import BookingAvailableTimeslotComponent from "./BookingAvailableTimeslotComponent";
+import BookingTimeslotUnavailableComponent from "./BookingTimeslotUnavailableComponent";
+import BookingTimeslotAvailableComponent from "./BookingTimeslotAvailableComponent";
 import { connect } from "react-redux";
 
 @(connect(
@@ -45,9 +45,9 @@ export default class BookingItemComponent extends React.Component<any, any>{
                                                 <FormControl>
                                                     {timeslot.booked
                                                         ? 
-                                                            <BookingUnavailableTimeslotComponent timeslot={timeslot}/>
+                                                            <BookingTimeslotUnavailableComponent timeslot={timeslot}/>
                                                         : 
-                                                            <BookingAvailableTimeslotComponent timeslot={timeslot}/>
+                                                            <BookingTimeslotAvailableComponent timeslot={timeslot}/>
                                                     }
                                                 </FormControl>
                                             </Button>
