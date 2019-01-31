@@ -3,9 +3,9 @@ import { Paper, Grid } from "@material-ui/core";
 import {connect} from 'react-redux';
 
 @(connect(
-    (state: any)=>{
-        return state;
-    },
+    (state: any)=>({
+        selectedTimeslot: state.bookingCalender.bookingTimeslotDetailPopper.selectedTimeslot
+    }),
     (dispatch)=>({
 
     })
@@ -18,6 +18,10 @@ export default class BookingTimeslotDetailViewComponent extends React.Component<
                 <h5>Basic Infromation</h5>
                 <Grid container>
                     <Grid item>
+                        Name
+                    </Grid>
+                    <Grid item>
+                        {this.props.selectedTimeslot.name}
                     </Grid>
                 </Grid>
             </Paper>

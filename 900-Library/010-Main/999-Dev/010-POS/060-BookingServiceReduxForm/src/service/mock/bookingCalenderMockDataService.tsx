@@ -10,12 +10,16 @@ export default {
                     {
                         id: 1,
                         startTime: new Date(2019, 0, 31, 11),
-                        endTime: new Date(2019, 0, 31, 11, 30)
+                        endTime: new Date(2019, 0, 31, 11, 30),
+                        name: "Booking Customer 1",
+                        contactPhone: "123456789"
                     },
                     {
                         id: 2,
                         startTime: new Date(2019, 0, 31, 13),
-                        endTime: new Date(2019, 0, 31, 15, 30)
+                        endTime: new Date(2019, 0, 31, 15, 30),
+                        name: "Booking Customer 2",
+                        contactPhone: "123456789"
                     }
                 ],
                 timeslotList: []
