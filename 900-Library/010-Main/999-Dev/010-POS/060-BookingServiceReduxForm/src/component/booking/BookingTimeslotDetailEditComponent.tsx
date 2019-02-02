@@ -1,7 +1,11 @@
 import * as React from "react";
 import { Paper, Grid, RadioGroup, FormControlLabel, Radio, Checkbox, TextField } from "@material-ui/core";
 import { DateTimePicker } from "material-ui-pickers";
+import { reduxForm, InjectedFormProps, Field } from "redux-form";
+import TextFieldGrid from "../../form/grid/TextFieldGrid";
+import DateTimeSelectGrid from "../../form/grid/DateTimeSelectGrid";
 
+@(reduxForm({form:"bookingTimeslotDetailForm"}) as any )
 export default class BookingTimeslotDetailEditComponent extends React.Component<any, any>{
     
     value;
@@ -35,17 +39,17 @@ export default class BookingTimeslotDetailEditComponent extends React.Component<
                 </Grid>
                 <Grid container>
                     <Grid item>
-                        <TextField label="Member Name"/>
+                        <Field name="memberName" label="Member Name" component={TextFieldGrid}/>
                     </Grid>
                 </Grid>
                 <Grid container>
                     <Grid item>
-                        <TextField label="Contact Phone"/>
+                        <Field name="contactPhone" label="Contact Phone" component={TextFieldGrid}/>
                     </Grid>
                 </Grid>
                 <Grid container>
                     <Grid item>
-                        <DateTimePicker value={this.value} onChange={(date)=>{this.value = date}}/>
+                        <Field name="bookingStartTime" label="Start Time" component={DateTimeSelectGrid}/>
                     </Grid>
                 </Grid>
                 <Grid container>
