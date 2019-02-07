@@ -1,13 +1,11 @@
 import * as React from "react";
-import { List, ListItem, ListItemText, Typography, ListItemIcon, SvgIcon, FormLabel, Grid, Fab, TextField, Paper, BottomNavigation, BottomNavigationAction, Card, CardContent} from "@material-ui/core";
+import { List, ListItem, ListItemText, Typography, ListItemIcon, SvgIcon, FormLabel, Grid, Fab, TextField, Paper, BottomNavigation, BottomNavigationAction, Card, CardContent, Button} from "@material-ui/core";
 import { connect} from "react-redux";
 import CheckoutItemComponent from "./CheckoutItemComponent";
 
 
 @(connect( 
     (state: any) => {
-        console.log("trigger map state to props");
-        console.log(state.checkoutItems);
         return {
             checkoutItems: state.checkoutItems,
         }
@@ -52,15 +50,23 @@ export default class CheckoutMaintenanceComponent extends React.Component<any, a
                 <Paper style={{position: "absolute", bottom: 0, height: 90, width: "100%"}}>
                     <List>
                         <ListItem>
-                            <Card style={{minWidth: 350}}>
-                                <CardContent>
-                                    <Grid container>
-                                        <Grid item>
-                                            Checkout
-                                        </Grid>
+                            <Button variant="contained" color="primary" style={{textTransform: 'none', width: "100%"}}>
+                                <Grid container>
+                                    <Grid item xs={8}>
+                                        Checkout
                                     </Grid>
-                                </CardContent>
-                            </Card>
+                                    <Grid item xs={2}>
+                                    </Grid>
+                                    <Grid item xs={2}>
+                                        {
+                                            this.props.checkoutItems.reduce(
+                                                (accumulator, currentValue) => accumulator + currentValue.total
+                                                , 0
+                                            )
+                                        }
+                                    </Grid>
+                                </Grid>
+                            </Button>
                         </ListItem>
                     </List>
                 </Paper>
