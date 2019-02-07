@@ -1,5 +1,5 @@
 import * as React from "react";
-import { List, ListItem, ListItemText, Typography, ListItemIcon, SvgIcon, FormLabel, Grid, Fab, TextField, Paper, BottomNavigation, BottomNavigationAction} from "@material-ui/core";
+import { List, ListItem, ListItemText, Typography, ListItemIcon, SvgIcon, FormLabel, Grid, Fab, TextField, Paper, BottomNavigation, BottomNavigationAction, Card, CardContent} from "@material-ui/core";
 import { connect} from "react-redux";
 import CheckoutItemComponent from "./CheckoutItemComponent";
 
@@ -36,7 +36,7 @@ export default class CheckoutMaintenanceComponent extends React.Component<any, a
 
     render(){
         return (
-            <Paper>
+            <Paper style={{position: "relative", minHeight: 300, paddingBottom: 90}}>
                 <List>
                     {
                         this.props.checkoutItems.map(
@@ -49,13 +49,21 @@ export default class CheckoutMaintenanceComponent extends React.Component<any, a
                         )
                     }
                 </List>
-                <BottomNavigation>
-                    <Grid container>
-                        <Grid item>
-                            Checkout
-                        </Grid>
-                    </Grid>
-                </BottomNavigation>
+                <Paper style={{position: "absolute", bottom: 0, height: 90, width: "100%"}}>
+                    <List>
+                        <ListItem>
+                            <Card style={{minWidth: 350}}>
+                                <CardContent>
+                                    <Grid container>
+                                        <Grid item>
+                                            Checkout
+                                        </Grid>
+                                    </Grid>
+                                </CardContent>
+                            </Card>
+                        </ListItem>
+                    </List>
+                </Paper>
             </Paper>
         );
     }
