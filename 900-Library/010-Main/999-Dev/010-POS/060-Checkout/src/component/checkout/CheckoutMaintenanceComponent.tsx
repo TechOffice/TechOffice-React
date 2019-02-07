@@ -52,10 +52,11 @@ export default class CheckoutMaintenanceComponent extends React.Component<any, a
                         <ListItem>
                             <Button variant="contained" color="primary" style={{textTransform: 'none', width: "100%"}}>
                                 <Grid container>
-                                    <Grid item xs={8}>
+                                    <Grid item xs={6}>
                                         Checkout
                                     </Grid>
-                                    <Grid item xs={2}>
+                                    <Grid item xs={4}>
+                                        Total {this.props.checkoutItems.length} items
                                     </Grid>
                                     <Grid item xs={2}>
                                         {
