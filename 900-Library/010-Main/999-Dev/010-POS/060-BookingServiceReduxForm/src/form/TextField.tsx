@@ -15,6 +15,6 @@ export default (field: any) => (
             {...field.input} 
             style={{height:35}}
             />
-        {field.meta.error && <span style={{color: "red"}}>{field.meta.error}</span>}
+        {field.meta && field.meta.error && <span style={{color: "red"}}>{field.meta.error}</span>}
     </FormGroup>
 );
