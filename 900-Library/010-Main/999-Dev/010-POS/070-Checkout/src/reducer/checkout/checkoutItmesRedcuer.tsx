@@ -1,60 +1,36 @@
+import * as _ from "lodash";
 
-export default (state = [], action)=>{
+export default (checkoutItems = [], action)=>{
     switch(action.type){
         case "ADD_PRODUCT":
-            var checkoutItems = state.slice();
-            for (var i=0; i<checkoutItems.length; i++){
-                var checkoutItem = checkoutItems[i];
-                if (checkoutItem.id == action.product.id){
-                    checkoutItem.quantity = Number(checkoutItem.quantity) + 1;
-                    checkoutItem.total = checkoutItem.quantity * checkoutItem.price;
-                    return checkoutItems;
-                }
+            if (action.product){
+                let newCheckoutItems = checkoutItems.slice();
+                let checkoutItem = action.product;
+                newCheckoutItems.push(checkoutItem);
+                return newCheckoutItems;
             }
-            var checkoutItem = action.product;
-            checkoutItem.quantity = 1;
-            checkoutItem.total = checkoutItem.quantity * checkoutItem.price;
-            checkoutItems.push(checkoutItem);
-            console.log(checkoutItems);
+            return checkoutItems
+        case "UPDATE_CHECKOUT_ITEM_FIELD":
+            if (_.isInteger(action.index) && action.event){
+                return checkoutItems.map((checkoutItem, index)=>{
+                    if (index == action.index){
+                        let name    =   action.event.target.name;
+                        let value   =   action.event.target.value; 
+                        if (action.inputType == 'integer'){
+                            if (isNaN(Number(value[value.length - 1]))){
+                                value = value.substring(0, value.length - 1);
+                            }
+                        }
+                        return {
+                            ...checkoutItem,
+                            [name]: value
+                        };
+                    }
+                    return checkoutItem
+                });
+            }
             return checkoutItems;
-		case "ADD_QUANTITY":
-			var checkoutItems = state.slice();
-			for (var i=0; i<checkoutItems.length; i++){
-                var checkoutItem = checkoutItems[i];
-                if (checkoutItem.id == action.checkoutItem.id){
-                    checkoutItem.quantity = Number(checkoutItem.quantity) + 1;
-                    checkoutItem.total = checkoutItem.quantity * checkoutItem.price;
-                    return checkoutItems;
-                }
-            }
-			return checkoutItems;
-		case "REMOVE_QUANTITY":
-			var checkoutItems = state.slice();
-			for (var i=0; i<checkoutItems.length; i++){
-                var checkoutItem = checkoutItems[i];
-                if (checkoutItem.id == action.checkoutItem.id){
-					if (checkoutItem.quantity > 1){
-						checkoutItem.quantity = Number(checkoutItem.quantity) - 1;
-						checkoutItem.total = checkoutItem.quantity * checkoutItem.price;
-						return checkoutItems;	
-					}else{
-						checkoutItems.splice(checkoutItems.indexOf(checkoutItem), 1);
-						return checkoutItems;
-					}
-                }
-            }
-			return checkoutItems;
-		case "UPDATE_QUANTITY": 
-			var checkoutItems = state.slice();
-			for (var i=0; i<checkoutItems.length; i++){
-                var checkoutItem = checkoutItems[i];
-                if (checkoutItem.id == action.checkoutItem.id){
-                    checkoutItem.quantity = Number(action.quantity);
-                    checkoutItem.total = checkoutItem.quantity * checkoutItem.price;
-                    return checkoutItems;
-                }
-            }
         default: 
-            return state;
+            return checkoutItems;
     }
 }

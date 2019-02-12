@@ -3,7 +3,7 @@ import { connect} from "react-redux";
 import { Card, CardActionArea, CardMedia, CardContent, Typography, CardActions, Button, CardHeader } from "@material-ui/core";
 
 @(connect( 
-    (state) => {},
+    undefined,
     (dispatch) => ({
         checkout: (product) => {dispatch({type: "ADD_PRODUCT", product: product })}
     })

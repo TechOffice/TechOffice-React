@@ -3,6 +3,7 @@ import { Paper, Grid } from "@material-ui/core";
 import CheckoutMaintenanceComponent from "./CheckoutMaintenanceComponent";
 import ProductListComponent from "./ProductListComponent";
 import CheckoutMockDataService from "../../service/mock/CheckoutMockDataService";
+import store from "../../store";
 
 
 export default class CheckoutComponent extends React.Component<any, any>{

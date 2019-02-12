@@ -38,9 +38,9 @@ export default class CheckoutMaintenanceComponent extends React.Component<any, a
                 <List>
                     {
                         this.props.checkoutItems.map(
-                            (checkoutItem)=>{
+                            (checkoutItem, index)=>{
                                 return (
-                                    <CheckoutItemComponent checkoutItem={checkoutItem}/> 
+                                    <CheckoutItemComponent index={index}/> 
                                 );
                             }
                                 
@@ -71,6 +71,7 @@ export default class CheckoutMaintenanceComponent extends React.Component<any, a
                         </ListItem>
                     </List>
                 </Paper>
+                {JSON.stringify(this.props.checkoutItems)}
             </Paper>
         );
     }

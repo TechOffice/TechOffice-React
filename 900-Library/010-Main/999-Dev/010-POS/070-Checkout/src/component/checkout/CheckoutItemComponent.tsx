@@ -1,10 +1,24 @@
 import * as React from "react";
 import { ListItem, ListItemText, Grid, Fab, SvgIcon, Collapse, CardContent, Card, Typography, IconButton } from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { reduxForm, Field } from "redux-form";
-import TextField from "../../form/TextField";
+import CheckoutItemTextField from "./form/CheckoutItemTextField";
+import { connect } from "react-redux";
 
-@(reduxForm({form:"testForm"}) as any)
+@(connect(
+    (state: any, ownProps: any)=>({
+        checkoutItem: state.checkoutItems[ownProps.index]
+    }),
+    (dispatch)=>({
+        updateField: function(index, event, inputType){
+            dispatch({
+                type: "UPDATE_CHECKOUT_ITEM_FIELD",
+                index: index,
+                event: event,
+                inputType: inputType
+            });
+        } 
+    })
+) as any)
 export default class CheckoutItemComponent extends React.Component<any, any>{
     
     constructor(props){
@@ -36,7 +50,7 @@ export default class CheckoutItemComponent extends React.Component<any, any>{
                     </CardContent>
                     <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                         <CardContent>
-                            <Field name="quantity" label="Quantity" component={TextField}/>
+                            <CheckoutItemTextField {...this.props} name="quantity" label="Quantity" inputType="integer"/>
                         </CardContent>
                     </Collapse>
                 </Card>
