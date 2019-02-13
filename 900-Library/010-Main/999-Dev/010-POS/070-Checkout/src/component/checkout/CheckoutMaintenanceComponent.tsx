@@ -2,6 +2,7 @@ import * as React from "react";
 import { List, ListItem, ListItemText, Typography, ListItemIcon, SvgIcon, FormLabel, Grid, Fab, TextField, Paper, BottomNavigation, BottomNavigationAction, Card, CardContent, Button} from "@material-ui/core";
 import { connect} from "react-redux";
 import CheckoutItemComponent from "./CheckoutItemComponent";
+import CheckoutDialog from "./CheckoutDialog";
 
 
 @(connect( 
@@ -26,6 +27,7 @@ export default class CheckoutMaintenanceComponent extends React.Component<any, a
 
     constructor(props){
         super(props);
+        this.state = {isCheckoutDialogOpen: false}
     }
 
     componentWillReceiveProps(nextProps){
@@ -35,22 +37,26 @@ export default class CheckoutMaintenanceComponent extends React.Component<any, a
     render(){
         return (
             <Paper style={{position: "relative", minHeight: 90, paddingBottom: 90}}>
-                <List>
-                    {
-                        this.props.checkoutItems.map(
-                            (checkoutItem, index)=>{
-                                return (
-                                    <CheckoutItemComponent index={index}/> 
-                                );
-                            }
-                                
-                        )
-                    }
-                </List>
+                <Paper style={{maxHeight: 300, overflow: "auto"}}>
+                    <List>
+                        {
+                            this.props.checkoutItems.map(
+                                (checkoutItem, index)=>{
+                                    return (
+                                        <CheckoutItemComponent index={index}/> 
+                                    );
+                                }
+                                    
+                            )
+                        }
+                    </List>
+                </Paper>
                 <Paper style={{position: "absolute", bottom: 0, height: 90, width: "100%"}}>
                     <List>
                         <ListItem>
-                            <Button variant="contained" color="primary" style={{textTransform: 'none', width: "100%"}}>
+                            <Button onClick={()=>{this.setState({isCheckoutDialogOpen: true})}}
+                                variant="contained" color="primary" 
+                                style={{textTransform: 'none', width: "100%"}}>
                                 <Grid container>
                                     <Grid item xs={6}>
                                         Checkout
@@ -71,6 +77,8 @@ export default class CheckoutMaintenanceComponent extends React.Component<any, a
                         </ListItem>
                     </List>
                 </Paper>
+                <CheckoutDialog open={this.state.isCheckoutDialogOpen} 
+                    onClose={()=>{this.setState({isCheckoutDialogOpen: false})}}/>
                 {JSON.stringify(this.props.checkoutItems)}
             </Paper>
         );

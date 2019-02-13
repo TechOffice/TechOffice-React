@@ -4,12 +4,13 @@ import CheckoutMaintenanceComponent from "./CheckoutMaintenanceComponent";
 import ProductListComponent from "./ProductListComponent";
 import CheckoutMockDataService from "../../service/mock/CheckoutMockDataService";
 import store from "../../store";
+import CheckoutDialog from "./CheckoutDialog";
 
 
 export default class CheckoutComponent extends React.Component<any, any>{
 
     private productList: any[];
-
+    
     componentWillMount(){
         var data = CheckoutMockDataService.getMockData();
         this.productList = data;
