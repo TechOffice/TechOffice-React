@@ -12,20 +12,16 @@ export default class ProductComponent extends React.Component<any, any>{
     
     constructor(props){
         super(props);
-        this.state = {
-            product: this.props.product
-        };
-        console.log(this.props.product);
     }
 
     render(){
         return(
             <Card style={{maxWidth: 150}}>
                 <CardHeader style={{backgroundColor: "blue"}}/>
-                <CardActionArea onClick={()=>{this.props.checkout(this.state.product)}}>
+                <CardActionArea onClick={()=>{this.props.checkout(this.props.product)}}>
                     <CardContent>
-                        <Typography gutterBottom variant="h6">
-                            {this.state.product.name}
+                        <Typography gutterBottom variant="body2">
+                            {this.props.product.name}
                         </Typography>
                     </CardContent>
                 </CardActionArea>

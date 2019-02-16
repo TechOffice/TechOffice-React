@@ -27,12 +27,12 @@ class App extends React.Component<any, any>{
     render(){
         return (
             <div style={{ display: 'flex'}}>
-                <AppBar position="fixed" style={{zIndex: 100000000, height: 50}}>
+                <AppBar position="fixed" style={{height: 50}}>
                     <Toolbar></Toolbar>
                 </AppBar>
                 <MenuComponent/>
                 <div >
-                    <div style={{height: 50}}></div>
+                    <div style={{height: 70}}></div>
                     <CheckoutComponent/>
                 </div>
             </div>            

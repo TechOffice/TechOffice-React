@@ -17,8 +17,20 @@ export default (checkoutItems = [], action)=>{
                         let name    =   action.event.target.name;
                         let value   =   action.event.target.value; 
                         if (action.inputType == 'integer'){
-                            if (isNaN(Number(value[value.length - 1]))){
-                                value = value.substring(0, value.length - 1);
+                            if (!isNaN(Number(value))){
+                                return {
+                                    ...checkoutItem,
+                                    [name]: value
+                                };
+                            }else {
+                                let originalValue = checkoutItem[name];
+                                if (!originalValue){
+                                    originalValue = "";
+                                }
+                                return {
+                                    ...checkoutItem,
+                                    [name]: originalValue
+                                };
                             }
                         }
                         return {

@@ -50,7 +50,22 @@ export default class CheckoutItemComponent extends React.Component<any, any>{
                     </CardContent>
                     <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                         <CardContent>
-                            <CheckoutItemTextField {...this.props} name="quantity" label="Quantity" inputType="integer"/>
+                            <Grid container>
+                                <Grid item xs={3}>
+                                    <CheckoutItemTextField {...this.props} name="quantity" label="Quantity" inputType="integer"/>
+                                </Grid>
+                                <Grid item xs={3}>
+                                    <CheckoutItemTextField {...this.props} name="price" label="Price" inputType="integer"/>
+                                </Grid>
+                                <Grid item xs={3}>
+                                    <CheckoutItemTextField {...this.props} name="discountPct" label="Discount(%)" inputType="integer"/>
+                                </Grid>
+                            </Grid>
+                            <Grid container>
+                                <Grid item>
+                                    <CheckoutItemTextField {...this.props} name="remark" label="Remark" inputType="string"/>
+                                </Grid>
+                            </Grid>
                         </CardContent>
                     </Collapse>
                 </Card>

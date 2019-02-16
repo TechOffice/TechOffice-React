@@ -3,8 +3,6 @@ import * as React from 'react';
 
 /**
  * Text Field 
- * 
- * Text Field Wrapper for Redux Form
  */
 export default (props: any) => (
     <FormGroup >
