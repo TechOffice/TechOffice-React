@@ -4,6 +4,7 @@ import CheckoutMaintenanceComponent from "./CheckoutMaintenanceComponent";
 import ProductListComponent from "./ProductListComponent";
 import CheckoutMockDataService from "../../service/mock/CheckoutMockDataService";
 import SearchIcon from '@material-ui/icons/Search';
+import ProductSearchComponent from "./ProductSearchComponent";
 
 export default class CheckoutComponent extends React.Component<any, any>{
 
@@ -24,27 +25,7 @@ export default class CheckoutComponent extends React.Component<any, any>{
                     <Grid item md={7}>
                         <Grid container spacing={8}>
                             <Grid item xs={12}>
-                                <FormGroup style={{width: "100%"}}>
-                                    <FormLabel>
-                                        <Typography variant="h5">
-                                            Search Product / Service
-                                        </Typography>
-                                    </FormLabel>
-                                    <TextField 
-                                        variant="outlined"
-                                        style={{height:35}}
-                                        placeholder="Search"
-                                        InputProps={{
-                                            endAdornment: (
-                                                <InputAdornment position="end">
-                                                    <IconButton>
-                                                        <SearchIcon/>
-                                                    </IconButton>
-                                                </InputAdornment>
-                                            )
-                                        }}                    
-                                    />
-                                </FormGroup>
+                                <ProductSearchComponent/>
                             </Grid>
                             <Grid item>
                                 <ProductListComponent 

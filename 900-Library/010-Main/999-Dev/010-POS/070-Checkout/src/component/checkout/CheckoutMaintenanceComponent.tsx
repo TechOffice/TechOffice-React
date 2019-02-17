@@ -3,6 +3,8 @@ import { List, ListItem, ListItemText, Typography, ListItemIcon, SvgIcon, FormLa
 import { connect} from "react-redux";
 import CheckoutItemComponent from "./CheckoutItemComponent";
 import CheckoutDialog from "./CheckoutDialog";
+import CheckoutMaintenanceFooterComponent from "./CheckoutMaintenanceFooterComponent";
+import CheckoutMaintenanceHeaderComponent from "../CheckoutMaintenanceHeaderComponent";
 
 
 @(connect( 
@@ -37,17 +39,7 @@ export default class CheckoutMaintenanceComponent extends React.Component<any, a
     render(){
         return (
             <Paper style={{position: "relative", minHeight: 90, paddingBottom: 90}}>
-                <Paper>
-                    <Grid container>
-                        <Grid item>
-                            <Select>
-                                <MenuItem>Testing Hair Stylist 1</MenuItem>
-                                <MenuItem>Testing Hair Stylist 2</MenuItem>
-                                <MenuItem>Testing Hair Stylist 3</MenuItem>
-                            </Select>
-                        </Grid>
-                    </Grid>
-                </Paper>
+                <CheckoutMaintenanceHeaderComponent/>
                 <Paper>
                     {
                         this.props.checkoutItems && this.props.checkoutItems.length > 0 &&
@@ -66,32 +58,9 @@ export default class CheckoutMaintenanceComponent extends React.Component<any, a
                             </List>
                         </Paper>
                     }
-                    <Paper style={{position: "absolute", bottom: 0, height: 90, width: "100%"}}>
-                        <List>
-                            <ListItem>
-                                <Button onClick={()=>{this.setState({isCheckoutDialogOpen: true})}}
-                                    variant="contained" color="primary" 
-                                    style={{textTransform: 'none', width: "100%"}}>
-                                    <Grid container>
-                                        <Grid item xs={6}>
-                                            Checkout
-                                        </Grid>
-                                        <Grid item xs={4}>
-                                            Total {this.props.checkoutItems.length} items
-                                        </Grid>
-                                        <Grid item xs={2}>
-                                            {
-                                                this.props.checkoutItems.reduce(
-                                                    (accumulator, currentValue) => accumulator + currentValue.total
-                                                    , 0
-                                                )
-                                            }
-                                        </Grid>
-                                    </Grid>
-                                </Button>
-                            </ListItem>
-                        </List>
-                    </Paper>
+                    <CheckoutMaintenanceFooterComponent 
+                        checkoutItems={this.props.checkoutItems}
+                        openCheckoutDialog={()=>{this.setState({isCheckoutDialogOpen: true})}}/>
                     <CheckoutDialog open={this.state.isCheckoutDialogOpen} 
                         onClose={()=>{this.setState({isCheckoutDialogOpen: false})}}/>
                 </Paper>
