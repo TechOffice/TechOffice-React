@@ -1,10 +1,9 @@
 import * as React from "react";
-import { Paper, Grid, TextField, FormLabel, FormGroup, OutlinedInput, InputAdornment, IconButton, Typography } from "@material-ui/core";
+import { Paper, Grid } from "@material-ui/core";
 import CheckoutMaintenanceComponent from "./CheckoutMaintenanceComponent";
-import ProductListComponent from "./ProductListComponent";
+import ProductListComponent from "./product/ProductListComponent";
 import CheckoutMockDataService from "../../service/mock/CheckoutMockDataService";
-import SearchIcon from '@material-ui/icons/Search';
-import ProductSearchComponent from "./ProductSearchComponent";
+import ProductSearchComponent from "./product/ProductSearchComponent";
 
 export default class CheckoutComponent extends React.Component<any, any>{
 

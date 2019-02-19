@@ -1,10 +1,10 @@
 import * as React from "react";
-import { List, ListItem, ListItemText, Typography, ListItemIcon, SvgIcon, FormLabel, Grid, Fab, TextField, Paper, BottomNavigation, BottomNavigationAction, Card, CardContent, Button, Select, MenuItem} from "@material-ui/core";
+import { List, Paper} from "@material-ui/core";
 import { connect} from "react-redux";
 import CheckoutItemComponent from "./CheckoutItemComponent";
 import CheckoutDialog from "./CheckoutDialog";
-import CheckoutMaintenanceFooterComponent from "./CheckoutMaintenanceFooterComponent";
-import CheckoutMaintenanceHeaderComponent from "../CheckoutMaintenanceHeaderComponent";
+import CheckoutMaintenanceFooterComponent from "./maintenance/CheckoutMaintenanceFooterComponent";
+import CheckoutMaintenanceHeaderComponent from "./maintenance/CheckoutMaintenanceHeaderComponent";
 
 
 @(connect( 
