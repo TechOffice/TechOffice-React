@@ -10,6 +10,13 @@ export default (checkoutItems = [], action)=>{
                 return newCheckoutItems;
             }
             return checkoutItems
+        case "REMOVE_CHECKOUT_ITEM_FIELD":
+            if (_.isInteger(action.index)){
+                let newCheckoutItems = [...checkoutItems];
+                newCheckoutItems.splice(action.index, 1);
+                return newCheckoutItems;
+            }
+            return checkoutItems
         case "UPDATE_CHECKOUT_ITEM_FIELD":
             if (_.isInteger(action.index) && action.event){
                 return checkoutItems.map((checkoutItem, index)=>{

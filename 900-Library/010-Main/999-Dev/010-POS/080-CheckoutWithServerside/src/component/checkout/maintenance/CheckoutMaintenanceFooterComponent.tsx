@@ -22,8 +22,21 @@ export default class CheckoutMaintenanceFooterComponent extends React.Component<
                             <Grid item xs={2}>
                                 {
                                     this.props.checkoutItems.reduce(
-                                        (accumulator, currentValue) => accumulator + currentValue.total
-                                        , 0
+                                        (accumulator, currentValue) => {
+                                            if (currentValue.type == "product"){
+                                                return Number(accumulator) + 
+                                                Number((
+                                                    ( currentValue.price ? currentValue.price : 0 ) * 
+                                                    ( currentValue.quantity ? currentValue.quantity : 1 ) * 
+                                                    (1 - (currentValue.discountPct ? currentValue.discountPct : 0)/100 )                              
+                                                ).toFixed(1))
+                                            }
+                                            return Number(accumulator) + 
+                                                Number((
+                                                    ( currentValue.price ? currentValue.price : 0 ) * 
+                                                    (1 - (currentValue.discountPct ? currentValue.discountPct : 0)/100 )                              
+                                                ).toFixed(1))
+                                        }, 0
                                     )
                                 }
                             </Grid>
