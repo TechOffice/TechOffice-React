@@ -19,7 +19,7 @@ import { connect } from "react-redux";
         } 
     })
 ) as any)
-export default class CheckoutItemComponent extends React.Component<any, any>{
+export default class CheckoutProductItemComponent extends React.Component<any, any>{
     
     constructor(props){
         super(props);

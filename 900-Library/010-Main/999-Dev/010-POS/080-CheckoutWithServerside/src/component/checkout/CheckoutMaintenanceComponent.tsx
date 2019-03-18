@@ -1,10 +1,11 @@
 import * as React from "react";
 import { List, Paper} from "@material-ui/core";
 import { connect} from "react-redux";
-import CheckoutItemComponent from "./CheckoutItemComponent";
+import CheckoutProductItemComponent from "./CheckoutProductItemComponent";
 import CheckoutDialog from "./CheckoutDialog";
 import CheckoutMaintenanceFooterComponent from "./maintenance/CheckoutMaintenanceFooterComponent";
 import CheckoutMaintenanceHeaderComponent from "./maintenance/CheckoutMaintenanceHeaderComponent";
+import CheckoutServiceItemComponent from "./CheckoutServiceItemComponent";
 
 
 @(connect( 
@@ -14,15 +15,7 @@ import CheckoutMaintenanceHeaderComponent from "./maintenance/CheckoutMaintenanc
         }
     },
     (dispatch) => ({
-        addQuantity: (checkoutItem: any) => {
-            dispatch({type: "ADD_QUANTITY", checkoutItem: checkoutItem})
-        },
-        removeQuantity: (checkoutItem: any) => {
-            dispatch({type: "REMOVE_QUANTITY", checkoutItem: checkoutItem})
-        },
-        updateQuantity: (checkoutItem: any, quantity: any) => {
-			dispatch({type: "UPDATE_QUANTITY", checkoutItem: checkoutItem, quantity: quantity})
-		}
+
     })
 ) as any)
 export default class CheckoutMaintenanceComponent extends React.Component<any, any>{
@@ -31,11 +24,7 @@ export default class CheckoutMaintenanceComponent extends React.Component<any, a
         super(props);
         this.state = {isCheckoutDialogOpen: false}
     }
-
-    componentWillReceiveProps(nextProps){
-        console.log('componentWillReceiveProps', nextProps);        
-    }
-
+    
     render(){
         return (
             <Paper style={{position: "relative", minHeight: 90, paddingBottom: 90}}>
@@ -48,8 +37,13 @@ export default class CheckoutMaintenanceComponent extends React.Component<any, a
                                 {
                                     this.props.checkoutItems.map(
                                         (checkoutItem, index)=>{
+                                            if (checkoutItem.type == "service"){
+                                                return (
+                                                    <CheckoutServiceItemComponent index={index}/> 
+                                                );
+                                            }
                                             return (
-                                                <CheckoutItemComponent index={index}/> 
+                                                <CheckoutProductItemComponent index={index}/> 
                                             );
                                         }
                                             

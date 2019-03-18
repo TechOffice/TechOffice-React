@@ -16,11 +16,12 @@ export default class ProductSearchComponent extends React.Component<any, any>{
             <TextField 
                 variant="outlined"
                 style={{height:35}}
+                disabled
                 placeholder="Search"
                 InputProps={{
                     endAdornment: (
                         <InputAdornment position="end">
-                            <IconButton>
+                            <IconButton disabled>
                                 <SearchIcon/>
                             </IconButton>
                         </InputAdornment>
