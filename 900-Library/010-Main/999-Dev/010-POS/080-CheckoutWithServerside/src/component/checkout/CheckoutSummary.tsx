@@ -95,11 +95,14 @@ export default class extends React.Component<any, any>{
                                 </Grid>
                                 <Grid item>
                                     <Grid container spacing={8}>
-                                        <Grid item>
-                                            <Button variant="contained" color="primary" >Cash</Button>
+                                        <Grid item xs={4}>
+                                            <Button variant="contained" color="primary">Cash</Button>
                                         </Grid>
-                                        <Grid item>
-                                            <Button variant="contained" color="primary" >Credit Card</Button>
+                                        <Grid item xs={4}>
+                                            <Button variant="contained" color="primary">Credit Card</Button>
+                                        </Grid>
+                                        <Grid item xs={4}>
+                                            <Button variant="contained" color="primary">eWallet</Button>
                                         </Grid>
                                     </Grid>
                                 </Grid>
