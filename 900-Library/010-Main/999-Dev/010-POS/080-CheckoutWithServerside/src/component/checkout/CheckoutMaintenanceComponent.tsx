@@ -1,21 +1,30 @@
 import * as React from "react";
-import { List, Paper} from "@material-ui/core";
+import { List, Paper, ListItem, Grid, Typography, TextField, OutlinedInput} from "@material-ui/core";
 import { connect} from "react-redux";
 import CheckoutProductItemComponent from "./CheckoutProductItemComponent";
 import CheckoutDialog from "./CheckoutDialog";
 import CheckoutMaintenanceFooterComponent from "./maintenance/CheckoutMaintenanceFooterComponent";
 import CheckoutMaintenanceHeaderComponent from "./maintenance/CheckoutMaintenanceHeaderComponent";
 import CheckoutServiceItemComponent from "./CheckoutServiceItemComponent";
+import FormTextField from "./form/FormTextField";
 
 
 @(connect( 
     (state: any) => {
         return {
             checkoutItems: state.checkoutItems,
+            model: state
         }
     },
     (dispatch) => ({
-
+        updateFormField: function(name, event, inputType){
+            dispatch({
+                type: "UPDATE_FIELD",
+                name: name,
+                event: event,
+                inputType: inputType
+            });
+        }, 
     })
 ) as any)
 export default class CheckoutMaintenanceComponent extends React.Component<any, any>{
@@ -27,7 +36,7 @@ export default class CheckoutMaintenanceComponent extends React.Component<any, a
     
     render(){
         return (
-            <Paper style={{position: "relative", minHeight: 90, paddingBottom: 90}}>
+            <Paper style={{position: "relative", minHeight: 180, paddingBottom: 180}}>
                 <CheckoutMaintenanceHeaderComponent/>
                 <Paper>
                     {
@@ -52,9 +61,40 @@ export default class CheckoutMaintenanceComponent extends React.Component<any, a
                             </List>
                         </Paper>
                     }
-                    <CheckoutMaintenanceFooterComponent 
-                        checkoutItems={this.props.checkoutItems}
-                        openCheckoutDialog={()=>{this.setState({isCheckoutDialogOpen: true})}}/>
+                    <Paper style={{position: "absolute", bottom: 0, height: 180, width: "100%"}}>
+                        <List>
+                            <ListItem>
+                                <Grid container>
+                                    <Grid item xs={2}></Grid>
+                                    <Grid item xs={2}>
+                                        <Typography variant="body2" gutterBottom={true} >
+                                            Discount
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item xs={8}>
+                                        <FormTextField {...this.props} name="discount" inputType="integer"/>
+                                    </Grid>
+                                </Grid>
+                            </ListItem>
+                            <ListItem>
+                                <Grid container>
+                                    <Grid item xs={2}></Grid>
+                                    <Grid item xs={2}>
+                                        <Typography variant="body2" gutterBottom={true} >
+                                            Tips
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item xs={8}>
+                                        <FormTextField {...this.props} name="tip" inputType="integer"/>                         
+                                    </Grid>
+                                </Grid>
+                            </ListItem>
+                            <CheckoutMaintenanceFooterComponent 
+                                checkoutItems={this.props.checkoutItems}
+                                model = {this.props.model}
+                                openCheckoutDialog={()=>{this.setState({isCheckoutDialogOpen: true})}}/>
+                        </List>
+                    </Paper>
                     <CheckoutDialog open={this.state.isCheckoutDialogOpen} 
                         onClose={()=>{this.setState({isCheckoutDialogOpen: false})}}/>
                 </Paper>

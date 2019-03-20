@@ -6,6 +6,7 @@ import { connect } from "react-redux";
     (state: any) => {
         return {
             checkoutItems: state.checkoutItems,
+            model: state
         }
     },
     undefined
@@ -27,7 +28,22 @@ export default class extends React.Component<any, any>{
                                                     <TableRow>
                                                         <TableCell>{index + 1}</TableCell>
                                                         <TableCell>{checkoutItem.name}</TableCell>
-                                                        <TableCell>${checkoutItem.total}</TableCell>
+                                                        <TableCell>
+                                                            $ {   
+                                                                checkoutItem.type == 'product' 
+                                                                ?
+                                                                    (
+                                                                        ( checkoutItem.price ? checkoutItem.price : 0 ) * 
+                                                                        ( checkoutItem.quantity ? checkoutItem.quantity : 1 ) * 
+                                                                        (1 - (checkoutItem.discountPct ? checkoutItem.discountPct : 0)/100 )                              
+                                                                    ).toFixed(1) 
+                                                                :
+                                                                    (
+                                                                        ( checkoutItem.price ? checkoutItem.price : 0 ) * 
+                                                                        (1 - (checkoutItem.discountPct ? checkoutItem.discountPct : 0)/100 )                             
+                                                                    ).toFixed(1)
+                                                            }      
+                                                        </TableCell>
                                                     </TableRow>
                                                 );
                                             }
@@ -36,15 +52,34 @@ export default class extends React.Component<any, any>{
                                     }
                                     <TableRow>
                                         <TableCell colSpan={2} align="right"><b>Discount</b></TableCell>
-                                        <TableCell>$</TableCell>
+                                        <TableCell>$ {this.props.model.discount}</TableCell>
                                     </TableRow>
                                     <TableRow>
                                         <TableCell colSpan={2} align="right"><b>Tip</b></TableCell>
-                                        <TableCell>$</TableCell>
+                                        <TableCell>$ {this.props.model.tip}</TableCell>
                                     </TableRow>
                                     <TableRow>
                                         <TableCell colSpan={2} align="right"><b>Total</b></TableCell>
-                                        <TableCell>$</TableCell>
+                                        <TableCell>$ {
+                                                this.props.checkoutItems.reduce(
+                                                    (accumulator, currentValue) => {
+                                                        if (currentValue.type == "product"){
+                                                            return Number(accumulator) + 
+                                                            Number((
+                                                                ( currentValue.price ? currentValue.price : 0 ) * 
+                                                                ( currentValue.quantity ? currentValue.quantity : 1 ) * 
+                                                                (1 - (currentValue.discountPct ? currentValue.discountPct : 0)/100 )                              
+                                                            ).toFixed(1))
+                                                        }
+                                                        return Number(accumulator) + 
+                                                            Number((
+                                                                ( currentValue.price ? currentValue.price : 0 ) * 
+                                                                (1 - (currentValue.discountPct ? currentValue.discountPct : 0)/100 )                              
+                                                            ).toFixed(1))
+                                                    }, 0
+                                                ) + Number(this.props.model.tip) - Number(this.props.model.discount)
+                                            }
+                                        </TableCell>
                                     </TableRow>
                                 </TableBody>
                             </Table>
