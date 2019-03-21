@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "watch": "webpack --progress --colors --watch",
-    "serve": "node server.js",
+    "serve": "node server-dev.js",
     "start": "webpack-dev-server --open"
   },
   "author": "",
