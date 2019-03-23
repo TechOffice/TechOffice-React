@@ -1,4 +1,3 @@
-import { FormControl } from "@material-ui/core";
 import AsyncSelect from 'react-select/lib/Async';
 import * as React from "react";
 

@@ -25,7 +25,7 @@ export default class extends React.Component<any, any>{
                                         <TableRow>
                                             <TableCell>{index + 1}</TableCell>
                                             <TableCell>{checkoutItem.name}</TableCell>
-                                            <TableCell>
+                                            <TableCell align="right">
                                                 $ {   
                                                     checkoutItem.type == 'product' 
                                                     ?
@@ -49,15 +49,15 @@ export default class extends React.Component<any, any>{
                         }
                         <TableRow>
                             <TableCell colSpan={2} align="right"><b>Discount</b></TableCell>
-                            <TableCell>$ {this.props.model.discount}</TableCell>
+                            <TableCell align="right">$ {this.props.model.discount}</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell colSpan={2} align="right"><b>Tip</b></TableCell>
-                            <TableCell>$ {this.props.model.tip}</TableCell>
+                            <TableCell align="right">$ {this.props.model.tip}</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell colSpan={2} align="right"><b>Total</b></TableCell>
-                            <TableCell>$ {
+                            <TableCell align="right">$ {
                                     this.props.checkoutItems.reduce(
                                         (accumulator, currentValue) => {
                                             if (currentValue.type == "product"){

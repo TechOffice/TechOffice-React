@@ -33,25 +33,30 @@ export default class CheckoutMaintenanceFooterComponent extends React.Component<
                     ).toFixed(1));
             }
         }
-
+        payment = Number(payment) + Number(this.props.model.tip?this.props.model.tip:0) - 
+            Number(this.props.model.discount?this.props.model.discount:0);
         return payment;
     }
 
     render(){
+        let isCheckout = true;
+        if (this.calcRemainingPayment() <= 0){
+            isCheckout = false;
+        }
         return (
             <ListItem>
                 <Button onClick={()=>{this.props.openCheckoutDialog()}}
-                    disabled={this.calcRemainingPayment() <= 0}
+                    disabled={!isCheckout}
                     variant="contained" color="primary" 
                     style={{textTransform: 'none', width: "100%"}}>
                     <Grid container>
-                        <Grid item xs={6}>
+                        <Grid item xs={4}>
                             Checkout
                         </Grid>
                         <Grid item xs={4}>
                             Total {this.props.checkoutItems.length} items
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item xs={4}>
                             $ {
                                 this.props.checkoutItems.reduce(
                                     (accumulator, currentValue) => {

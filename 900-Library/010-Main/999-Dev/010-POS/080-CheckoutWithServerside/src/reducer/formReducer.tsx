@@ -7,7 +7,7 @@ export default (form , action) => {
             if (action.inputType == 'integer'){
                 if (!isNaN(Number(value))){
                     if (name){
-                        return _.set(_.clone(form), name,value);
+                        return _.set(_.clone(form), name, value);
                     }else {
                         return value;
                     }
