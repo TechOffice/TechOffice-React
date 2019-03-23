@@ -74,7 +74,7 @@ export default class extends React.Component<any, any>{
                                                     (1 - (currentValue.discountPct ? currentValue.discountPct : 0)/100 )                              
                                                 ).toFixed(1))
                                         }, 0
-                                    ) + Number(this.props.model.tip) - Number(this.props.model.discount)
+                                    ) + Number(this.props.model.tip?this.props.model.tip:0) - Number(this.props.model.discount?this.props.model.discount:0)
                                 }
                             </TableCell>
                         </TableRow>

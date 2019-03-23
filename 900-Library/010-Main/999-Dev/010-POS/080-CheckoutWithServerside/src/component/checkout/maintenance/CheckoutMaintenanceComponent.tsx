@@ -1,12 +1,12 @@
 import * as React from "react";
 import { List, Paper, ListItem, Grid, Typography, TextField, OutlinedInput} from "@material-ui/core";
 import { connect} from "react-redux";
-import CheckoutProductItemComponent from "./CheckoutProductItemComponent";
-import CheckoutDialog from "./CheckoutDialog";
-import CheckoutMaintenanceFooterComponent from "./maintenance/CheckoutMaintenanceFooterComponent";
-import CheckoutMaintenanceHeaderComponent from "./maintenance/CheckoutMaintenanceHeaderComponent";
-import CheckoutServiceItemComponent from "./CheckoutServiceItemComponent";
-import FormTextField from "./form/FormTextField";
+import CheckoutProductItemComponent from "../product/CheckoutProductItemComponent";
+import CheckoutDialog from "../CheckoutDialog";
+import CheckoutMaintenanceFooterComponent from "./CheckoutMaintenanceFooterComponent";
+import CheckoutMaintenanceHeaderComponent from "./CheckoutMaintenanceHeaderComponent";
+import CheckoutServiceItemComponent from "../product/CheckoutServiceItemComponent";
+import FormTextField from "../form/FormTextField";
 
 
 @(connect( 
@@ -90,8 +90,6 @@ export default class CheckoutMaintenanceComponent extends React.Component<any, a
                                 </Grid>
                             </ListItem>
                             <CheckoutMaintenanceFooterComponent 
-                                checkoutItems={this.props.checkoutItems}
-                                model = {this.props.model}
                                 openCheckoutDialog={()=>{this.setState({isCheckoutDialogOpen: true})}}/>
                         </List>
                     </Paper>

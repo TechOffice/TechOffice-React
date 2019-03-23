@@ -2,12 +2,11 @@ import * as React from "react";
 import { ListItem, ListItemText, Grid, Fab, SvgIcon, Collapse, CardContent, Card, Typography, IconButton } from "@material-ui/core";
 import DeleteIcon from '@material-ui/icons/Delete';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import CheckoutItemTextField from "./form/CheckoutItemTextField";
+import CheckoutItemTextField from "../form/CheckoutItemTextField";
 import { connect } from "react-redux";
 
 @(connect(
     (state: any, ownProps: any)=>({
-        index: ownProps.index,
         checkoutItem: state.checkoutItems[ownProps.index]
     }),
     (dispatch)=>({
@@ -27,7 +26,7 @@ import { connect } from "react-redux";
         }
     })
 ) as any)
-export default class CheckoutProductItemComponent extends React.Component<any, any>{
+export default class CheckoutServiceItemComponent extends React.Component<any, any>{
     
     constructor(props){
         super(props);
@@ -56,10 +55,9 @@ export default class CheckoutProductItemComponent extends React.Component<any, a
                                 {   
                                     (
                                         ( checkoutItem.price ? checkoutItem.price : 0 ) * 
-                                        ( checkoutItem.quantity ? checkoutItem.quantity : 1 ) * 
-                                        (1 - (checkoutItem.discountPct ? checkoutItem.discountPct : 0)/100 )                              
+                                        (1 - (checkoutItem.discountPct ? checkoutItem.discountPct : 0)/100 )                             
                                     ).toFixed(1)
-                                }                            
+                                }
                             </Grid>
                             <Grid item xs={2}>
                                 <Fab size="small" type="extended"
@@ -73,7 +71,7 @@ export default class CheckoutProductItemComponent extends React.Component<any, a
                         <CardContent>
                             <Grid container>
                                 <Grid item xs={3}>
-                                    <CheckoutItemTextField {...this.props} name="quantity" label="Quantity" inputType="integer"/>
+                                    <CheckoutItemTextField {...this.props} name="assistant" label="Assistant" inputType="string"/>
                                 </Grid>
                                 <Grid item xs={3}>
                                     <CheckoutItemTextField {...this.props} name="price" label="Price" inputType="integer"/>

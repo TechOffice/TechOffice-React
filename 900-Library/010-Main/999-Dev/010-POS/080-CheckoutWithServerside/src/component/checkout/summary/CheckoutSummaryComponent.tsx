@@ -2,7 +2,8 @@ import * as React from "react";
 import { Paper, Grid, Table, TableBody, TableRow, TableCell, Divider, TextField, Button, IconButton, Typography } from "@material-ui/core";
 import { connect } from "react-redux";
 import CheckoutSummaryTableComponent from "./CheckoutSummaryTableComponent";
-import CheckoutsummaryPaidComponent from "./CheckoutsummaryPaidComponent";
+import CheckoutSummaryPaidComponent from "./CheckoutSummaryPaidComponent";
+import CheckoutSummaryPaidResultComponent from "./CheckoutSummaryPaidResultTableComponent";
 
 @(connect( 
     (state: any) => {
@@ -26,14 +27,10 @@ export default class extends React.Component<any, any>{
                             </Typography>
                         </div>
                         <CheckoutSummaryTableComponent/>
+                        <CheckoutSummaryPaidResultComponent/>
                     </Grid>
                     <Grid item xs={6}>
-                        <div style={{marginTop: 15,  marginLeft: 15 }}>
-                            <Typography variant="title">
-                                Paid
-                            </Typography>
-                        </div>
-                        <CheckoutsummaryPaidComponent/>
+                        <CheckoutSummaryPaidComponent/>
                     </Grid>
                 </Grid>
             </Paper>

@@ -11,6 +11,7 @@ import store from "./store";
 import CheckoutComponent from "./component/checkout/CheckoutComponent";
 import LoginComponent from "./component/login/LoginComponent";
 import { MemoryRouter } from "react-router";
+import AlertComponent from "./component/message/AlertComponent";
 
 @(connect( 
     function(state: any){
@@ -45,6 +46,7 @@ class App extends React.Component<any, any>{
                     <div style={{height: 70}}></div>
                     <CheckoutComponent/>
                 </div>
+                <AlertComponent/>
             </div>                    
         );
     }

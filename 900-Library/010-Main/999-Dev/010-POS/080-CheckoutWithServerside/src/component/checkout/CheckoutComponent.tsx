@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Paper, Grid } from "@material-ui/core";
-import CheckoutMaintenanceComponent from "./CheckoutMaintenanceComponent";
+import CheckoutMaintenanceComponent from "./maintenance/CheckoutMaintenanceComponent";
 import ProductListComponent from "./product/ProductListComponent";
 import CheckoutMockDataService from "../../service/mock/CheckoutMockDataService";
 import ProductSearchComponent from "./product/ProductSearchComponent";
