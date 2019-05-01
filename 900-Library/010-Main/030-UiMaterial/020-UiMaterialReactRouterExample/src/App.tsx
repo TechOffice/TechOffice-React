@@ -10,6 +10,7 @@ import TabComponent from "./component/TabComponent";
 import DialogComponent from "./component/DialogComponent";
 import FormComponent from "./component/FormComponent";
 import Paper from "@material-ui/core/Paper";
+import GridComponent from "./component/GridComponent";
 
 
 class App extends React.Component{
@@ -26,6 +27,7 @@ class App extends React.Component{
                     <li><Link to="/drawer">Drawer</Link></li>
                     <li><Link to="/dialog">Dialog</Link></li>
                     <li><Link to="/form">Form</Link></li>
+                    <li><Link to="/grid">Grid</Link></li>
                 </ul>
                 </h1>
             </Paper>            
@@ -45,6 +47,7 @@ ReactDOM.render(
             <Route path="/drawer" component={DrawerComponent}/>
             <Route path="/dialog" component={DialogComponent}/>
             <Route path="/form" component={FormComponent}/>
+            <Route path="/grid" component={GridComponent}/>
         </div>
     </MemoryRouter>, 
 document.getElementById('app'));
