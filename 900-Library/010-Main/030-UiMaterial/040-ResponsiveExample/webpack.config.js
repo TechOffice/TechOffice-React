@@ -8,7 +8,8 @@ module.exports = {
 		filename: 'app.bundle.js',
 		publicPath: '/bin'
 	},
-	devtool: "eval-source-map",
+	mode: 'development',
+	devtool: "inline-source-map",
 	devServer: {
 		contentBase: "./",
 		hot: true,
@@ -36,7 +37,6 @@ module.exports = {
 		new webpack.HotModuleReplacementPlugin()
 	],
 	resolve: {
-		symlinks: false,
 		extensions: ['.jsx', '.js', '.tsx', 'ts'], 
 		modules: [ path.resolve(__dirname, 'src'), 'node_modules' ] 
 	}
