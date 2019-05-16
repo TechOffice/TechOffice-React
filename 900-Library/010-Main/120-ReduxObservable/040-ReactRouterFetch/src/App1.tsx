@@ -9,7 +9,7 @@ import { MemoryRouter } from "react-router";
     // map state to props
     function(state: any){
         return {
-            counter: state.counter
+            data: state.data
         }
     },
     // map dispatch to props
@@ -17,8 +17,7 @@ import { MemoryRouter } from "react-router";
         return {
             onClick: function(n){
                 dispatch({
-                    type: "ADD_COUNTER",
-                    n: n
+                    type: "FETCH_DATA"
                 })
             }
         }
@@ -38,7 +37,7 @@ export default class extends React.Component<any, any>{
                 <div>
                     <button onClick={this.props.onClick.bind(this, 1)}>Add</button>
                 </div>
-                <div>Number: {this.props.counter}</div>
+                <div>Number: {JSON.stringify(this.props.data)}</div>
             </div>            
         )
     }

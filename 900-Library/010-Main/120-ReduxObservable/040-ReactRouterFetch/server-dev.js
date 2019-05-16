@@ -22,7 +22,7 @@ app.get("/", function(req, res){
 });
 
 app.get("/data", (req, res)=> {
-  res.send({
+  res.json({
     data: [{name: 'name1'}, {name: 'name2'}]
   })
 });

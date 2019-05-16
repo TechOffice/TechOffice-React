@@ -1,16 +1,11 @@
 export default (state: any = {counter: 0}, action: any) => {
     switch(action.type){
-        case "ADD_COUNTER":
-            if (action.n){
+        case "UPDATE_DATA":
+            if (action.data){
                 return {
                     ...state,
-                    counter: state.counter + action.n
+                    data: action.data
                 };
-            }
-            return state;
-        case "DECREASE_COUNTER":
-            if (action.n){
-                return{counter: state.counter - action.n};
             }
             return state;
         default:
