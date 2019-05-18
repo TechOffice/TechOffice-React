@@ -29,4 +29,3 @@ export default combineEpics<Action, Action, any>(
     pingEpic
 );
 
-const a = of('abc');
